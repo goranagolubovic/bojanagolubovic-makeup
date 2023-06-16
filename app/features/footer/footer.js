@@ -17,24 +17,19 @@ const Footer = () => {
           Kontaktiraj me:
         </p>
         <div className={"flex sm:px-22 lg:px-44 lg:mt-4  sm:mt-2 gap-2"}>
-          <Image src="/Phone.svg" width={30} height={30} alt="phone"></Image>
+          <Image src="/Phone.svg" width={30} height={30} alt="phone" />
           <p className={"sm:text-1xl lg:text-2xl text-white"}>
             Telefon: +38765123456
           </p>
         </div>
         <div className={"flex sm:px-22 lg:px-44 lg:mt-4  sm:mt-2 gap-2"}>
-          <Image
-            src="/Instagram.svg"
-            width={30}
-            height={30}
-            alt="instagram"
-          ></Image>
+          <Image src="/Instagram.svg" width={30} height={30} alt="instagram" />
           <p className={"sm:text-1xl lg:text-2xl text-white"}>
             Instagram: bojanagolubovic_makeup
           </p>
         </div>
         <div className={"flex sm:px-22 lg:px-44 lg:mt-4  sm:mt-2 mb-4  gap-2"}>
-          <Image src="/Email.svg" width={30} height={30} alt="email"></Image>
+          <Image src="/Email.svg" width={30} height={30} alt="email" />
           <p className={"sm:text-1xl lg:text-2xl text-white"}>
             Email: bojanagolubovic@gmail.com
           </p>
@@ -54,7 +49,7 @@ const Footer = () => {
             width={30}
             height={30}
             alt="homeaddress"
-          ></Image>
+          />
           <p className={"sm:text-1xl lg:text-2xl text-white"}>
             Adresa: Duška Koščice 25, Banjaluka
           </p>

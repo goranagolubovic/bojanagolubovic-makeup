@@ -19,11 +19,13 @@ module.exports = {
         brown: "#AC9897",
         yellow: "#F6E5D8",
         beige: "#EDCFCD",
+        gray: "#D9D9D9",
       },
       fontFamily: {
         sans: ["var(--font-inter)"],
         roboto: ["var(--font-roboto)"],
         qwigley: ["var(--font-qwigley)"],
+        greatvibes: ["var(--font-greatvibes)"],
       },
     },
   },
