@@ -10,7 +10,7 @@ const getGiftCards = async () => {
   return data;
 };
 
-const GiftCardPage = async () => {
+const GiftCardsPage = async () => {
   const data = await getGiftCards();
 
   return (
@@ -24,4 +24,4 @@ const GiftCardPage = async () => {
   );
 };
 
-export default GiftCardPage;
+export default GiftCardsPage;

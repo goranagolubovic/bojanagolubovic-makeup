@@ -26,6 +26,7 @@ module.exports = {
         roboto: ["var(--font-roboto)"],
         qwigley: ["var(--font-qwigley)"],
         greatvibes: ["var(--font-greatvibes)"],
+        pinyonscript: ["var(--font-pinyonscript)"],
       },
     },
   },

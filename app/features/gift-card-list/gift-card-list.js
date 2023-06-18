@@ -6,7 +6,12 @@ const GiftCardList = ({ giftCards }) => {
     <div className="flex justify-center items-center flex-wrap gap-24 sm:gap-24 lg:gap-48 my-10">
       {giftCards.map((elem) => {
         return (
-          <GiftCard image={elem.image} title={elem.title} price={elem.price} />
+          <GiftCard
+            image={elem.image}
+            title={elem.title}
+            price={elem.price}
+            id={elem._id}
+          />
         );
       })}
     </div>

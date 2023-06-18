@@ -4,7 +4,7 @@ import Button from "./button";
 
 import "../style/style.css";
 
-const GiftCard = ({ image, title, price }) => {
+const GiftCard = ({ id, image, title, price }) => {
   return (
     <div className=" bg-white flex border-l-[14px] border-solid  border-purple text-brown rounded-r-[50px] flex pr-8 sm:pr-4 lg:pr-12">
       <div className="w-1/2 relative">
@@ -19,14 +19,18 @@ const GiftCard = ({ image, title, price }) => {
             <p className="font-roboto font-extrabold text-2xl sm:text-2xl lg:text-3xl text-center">
               {title}
             </p>
-            <p className="font-roboto text-2xl sm:text-2xl lg:text-3xl">
+            <p className="font-pinyonscript text-2xl sm:text-2xl lg:text-3xl">
               poklon bon
             </p>
           </div>
-          <p className="font-roboto   text-1xl sm:text-1xl lg:text-2xl">
+          <p className="font-roboto text-1xl sm:text-1xl lg:text-2xl">
             {price}
           </p>
-          <Button text="Kupi" onClick={""} />
+          <Button
+            text="Kupi"
+            onClick={""}
+            href={`http://localhost:3001/gift-card/${id}`}
+          />
         </div>
       </div>
     </div>

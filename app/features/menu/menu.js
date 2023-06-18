@@ -58,10 +58,12 @@ const Menu = (props) => {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-10 md:space-y-0">
               {props.menuOptions.map((elem) => {
+                const pattern = /^\/elem\.link(\/.*)?$/;
                 const isActive =
                   elem.link === "/"
                     ? pathname === elem.link
-                    : pathname === "/" + elem.link;
+                    : pathname === "/" + elem.link ||
+                      pathname.startsWith("/" + elem.link + "/");
                 return (
                   <li
                     className={`text-white ${isActive ? "text-yellow" : ""}`}
