@@ -1,8 +1,13 @@
 import React from "react";
-import "../style/style.css";
-const Input = () => {
+
+const Input = ({ color, onChange, name }) => {
+  console.log(color);
   return (
-    <input className="bg-white focus:border-transparent focus:outline-none px-8" />
+    <input
+      name={name}
+      onChange={onChange}
+      className={`${color} focus:border-transparent focus:outline-none px-8`}
+    />
   );
 };
 

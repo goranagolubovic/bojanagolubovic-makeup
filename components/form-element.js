@@ -1,13 +1,14 @@
 import React from "react";
 import Input from "./input";
 
-import "../style/style.css";
-
-const FormElement = ({ label }) => {
+const FormElement = ({ label, color, onChange, name, error }) => {
   return (
     <div className="w-2/3 flex justify-between text-brown font-roboto text-1xl mb-8">
       <p className="font-bold">{label}</p>
-      <Input />
+      <div className="flex flex-col w-2/3">
+        <Input color={color} onChange={onChange} name={name} />
+        <p className="text-red-300">{error}</p>
+      </div>
     </div>
   );
 };

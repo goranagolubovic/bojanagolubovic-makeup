@@ -2,12 +2,12 @@
 import React from "react";
 import { useParams } from "next/navigation";
 import FormElement from "../../../components/form-element";
-import Input from "@/components/input";
 import Button from "@/components/button";
+import { URL } from "@/constants/constants";
 
 const getGiftCard = async (id) => {
   console.log("called");
-  const res = await fetch(`http://localhost:3001/api/gift-cards/${id}`, {
+  const res = await fetch(URL + `/api/gift-cards/${id}`, {
     cache: "no-cache",
   });
   const data = await res.json();
@@ -45,13 +45,13 @@ const GiftCardPurchase = async () => {
         </p>
         <p className="font-pinyonscript text-2xl text-brown">poklon bon</p>
         <div className="w-full my-16 flex justify-center flex-col items-center">
-          <FormElement label="*Ime" />
-          <FormElement label="*Prezime" />
-          <FormElement label="*Email" />
-          <FormElement label="*Broj kartice" />
-          <FormElement label="*Datum isteka" />
+          <FormElement label="*Ime" color="bg-white" />
+          <FormElement label="*Prezime" color="bg-white" />
+          <FormElement label="*Email" color="bg-white" />
+          <FormElement label="*Broj kartice" color="bg-white" />
+          <FormElement label="*Datum isteka" color="bg-white" />
           <div className="my-8">
-            <Button text="Potvrdi kupovinu" href="" onClick={() => {}} />
+            <Button text="Potvrdi kupovinu" href="" />
           </div>
         </div>
       </div>

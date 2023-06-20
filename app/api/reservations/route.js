@@ -3,7 +3,8 @@ import { DB_CONNECTION_ERROR } from "../../../constants/messages/error-messages"
 
 import { NextResponse } from "next/server";
 
-export async function GET(request) {
+export async function POST(request) {
+  const doc = await request.json();
   let db;
   try {
     const client = await clientPromise;
@@ -15,9 +16,9 @@ export async function GET(request) {
     };
     return NextResponse.json(errorObject);
   }
-  const data = await db.collection("gallery").find().toArray();
+  const result = await db.collection("reservations").insertOne(doc);
   const object = {
-    pictures: data,
+    message: "Success",
     status: 200,
   };
   return NextResponse.json(object);

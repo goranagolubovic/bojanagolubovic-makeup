@@ -1,6 +1,5 @@
 import clientPromise from "../../../../lib/mongodb";
 import { DB_CONNECTION_ERROR } from "../../../../constants/messages/error-messages";
-import { ObjectId } from "mongodb";
 
 import { NextResponse } from "next/server";
 
@@ -16,13 +15,17 @@ export async function GET(request, context) {
     };
     return NextResponse.json(errorObject);
   }
-  const data = await db.collection("gift-card").find().toArray();
-  const filteredData = data.filter((elem) =>
-    elem._id.equals(new ObjectId(context.params.id))
+  console.log(context.params.date);
+  const data = await db.collection("reservations").find().toArray();
+  const filteredData = data.filter(
+    (item) =>
+      item.hasOwnProperty(context.params.date) && item.isReserved === true
   );
+
   const object = {
-    giftcard: filteredData,
+    reservations: filteredData,
     status: 200,
   };
+
   return NextResponse.json(object);
 }

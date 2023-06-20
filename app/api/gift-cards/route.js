@@ -1,5 +1,5 @@
 import clientPromise from "../../../lib/mongodb";
-import { DB_CONNECTION_ERROR } from "@/app/contants/messages/error-messages";
+import { DB_CONNECTION_ERROR } from "../../../constants/messages/error-messages";
 
 import { NextResponse } from "next/server";
 

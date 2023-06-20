@@ -26,3 +26,13 @@ body {
   color: white;
   background: #f6dad8;
 }
+.react-calendar {
+  border-radius: 10px;
+}
+
+.react-calendar__navigation {
+  background: linear-gradient(to right, #f6e5d8, #ac97a5);
+  color: #77505e;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}

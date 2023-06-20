@@ -1,8 +1,7 @@
 import PersonalInfos from "@/components/personalInfos";
-import PersonalPhoto from "@/components/personalphoto";
 import React from "react";
 import Image from "next/image";
-import CertificatesList from "../features/certificates/certificates-list";
+import CertificatesList from "../../features/certificates/certificates-list";
 import Carousel from "@/components/carousel";
 
 const AboutMe = () => {
@@ -25,16 +24,9 @@ const AboutMe = () => {
             alt="bojanagolubovic"
           />
         </div>
-        <PersonalInfos
-          containerStyle="flex rounded rounded-[10px] bg-white p-8 sm:p-4 lg:p-40 my-10 sm:my-4 lg:my-20 w-full text-center"
-          textStyle="text-purple text-0.5xl sm:text-1xl lg:text-3xl font-bold"
-        />
+        <PersonalInfos />
       </div>
-      <CertificatesList
-        title="Moji sertifikati"
-        certificatesContainerStle="bg-gray mb-10 rounded rounded-[10px]  text-purple font-qwigley text-6xl py-10 justify-center items-center flex-col gap-10 w-full text-center"
-        titleStyle="mb-10 sm:mb-10 lg:mb-20 text-4xl sm:text-5xl lg:text-7xl"
-      >
+      <CertificatesList title="Moji sertifikati">
         <Carousel items={certificates} />
       </CertificatesList>
     </div>

@@ -1,8 +1,9 @@
 import React from "react";
-import MakeupTipsList from "../features/makeup-tips-list/makeup-tips-list";
+import MakeupTipsList from "../../features/makeup-tips-list/makeup-tips-list";
+import { URL } from "@/constants/constants";
 
 const getMakeupTips = async () => {
-  const res = await fetch("http://localhost:3001/api/makeup-tips", {
+  const res = await fetch(URL + "/api/makeup-tips", {
     cache: "no-store",
   });
   const data = await res.json();

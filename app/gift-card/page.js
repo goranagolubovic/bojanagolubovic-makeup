@@ -1,9 +1,10 @@
 import React from "react";
-import GiftCardList from "../features/gift-card-list/gift-card-list";
-import Error from "../features/error/error";
+import GiftCardList from "../../features/gift-card-list/gift-card-list";
+import Error from "../../features/error/error";
+import { URL } from "@/constants/constants";
 
 const getGiftCards = async () => {
-  const res = await fetch("http://localhost:3001/api/gift-cards", {
+  const res = await fetch(URL + "/api/gift-cards", {
     cache: "no-store",
   });
   const data = await res.json();

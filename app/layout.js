@@ -1,8 +1,8 @@
 import "./globals.css";
 import { Inter, Roboto, Qwigley, Pinyon_Script } from "next/font/google";
 import { Great_Vibes } from "next/font/google";
-import Header from "./features/header/header";
-import Footer from "./features/footer/footer";
+import Header from "../features/header/header";
+import Footer from "../features/footer/footer";
 
 const inter = Inter({
   subsets: ["latin"],

@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-import "../style/style.css";
-
 const MakeupTipCard = ({ image, text, title, bgColor }) => {
   return (
     <div className="w-full flex justify-center items-center">

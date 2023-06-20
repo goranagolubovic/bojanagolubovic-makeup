@@ -1,9 +1,9 @@
 import React from "react";
 
-const PersonalInfos = (props) => {
+const PersonalInfos = () => {
   return (
-    <div className={props.containerStyle}>
-      <p className={props.textStyle}>
+    <div className="flex rounded rounded-[10px] bg-white p-8 sm:p-4 lg:p-40 my-10 sm:my-4 lg:my-20 w-full text-center">
+      <p className="text-purple text-0.5xl sm:text-1xl lg:text-3xl font-bold">
         Dobrodošli! Moje ime je Bojana Golubović, i u svijetu šminkanja sam već
         par godina. Svoju strast za šminkanjem sam otkrila sa samo 15 godina. Za
         mene, šminkanje je više od samog posla. To je način na koji se izražavam

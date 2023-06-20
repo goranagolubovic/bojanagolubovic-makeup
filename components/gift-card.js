@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Button from "./button";
-
-import "../style/style.css";
+import { giftCardTitlePart } from "@/constants/constants";
+import { URL } from "@/constants/constants";
 
 const GiftCard = ({ id, image, title, price }) => {
   return (
@@ -20,17 +20,13 @@ const GiftCard = ({ id, image, title, price }) => {
               {title}
             </p>
             <p className="font-pinyonscript text-2xl sm:text-2xl lg:text-3xl">
-              poklon bon
+              {giftCardTitlePart}
             </p>
           </div>
           <p className="font-roboto text-1xl sm:text-1xl lg:text-2xl">
             {price}
           </p>
-          <Button
-            text="Kupi"
-            onClick={""}
-            href={`http://localhost:3001/gift-card/${id}`}
-          />
+          <Button text="Kupi" href={URL + `/gift-card/${id}`} />
         </div>
       </div>
     </div>
