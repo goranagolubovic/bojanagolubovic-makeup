@@ -15,7 +15,7 @@ const CustomCalendar = ({ onDateChange }) => {
   console.log(value.toLocaleDateString());
 
   return (
-    <div className="text-brown font-bold">
+    <div className="flex w-3/4 sm:w-2/3 lg:w-full justify-center items-center text-brown font-bold">
       <Calendar
         onChange={handleDateSelection}
         value={value}

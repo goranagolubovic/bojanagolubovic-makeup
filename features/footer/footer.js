@@ -14,22 +14,22 @@ const Footer = () => {
         >
           Kontaktiraj me:
         </p>
-        <div className={"flex sm:px-22 lg:px-44 lg:mt-4  sm:mt-2 gap-2"}>
+        <div className={"flex sm:pl-22 lg:pl-44 lg:mt-4  sm:mt-2 gap-2"}>
           <Image src="/Phone.svg" width={30} height={30} alt="phone" />
           <p className={"sm:text-1xl lg:text-2xl text-white"}>
             Telefon: +38765123456
           </p>
         </div>
-        <div className={"flex sm:px-22 lg:px-44 lg:mt-4  sm:mt-2 gap-2"}>
+        <div className={"flex sm:pl-22 lg:pl-44 lg:mt-4  sm:mt-2 gap-2"}>
           <Image src="/Instagram.svg" width={30} height={30} alt="instagram" />
           <p className={"sm:text-1xl lg:text-2xl text-white"}>
             Instagram: bojanagolubovic_makeup
           </p>
         </div>
-        <div className={"flex sm:px-22 lg:px-44 lg:mt-4  sm:mt-2 mb-4  gap-2"}>
+        <div className={"flex sm:pl-22 lg:pl-44 lg:mt-4  sm:mt-2 mb-4  gap-2"}>
           <Image src="/Email.svg" width={30} height={30} alt="email" />
           <p className={"sm:text-1xl lg:text-2xl text-white"}>
-            Email: bojanagolubovic@gmail.com
+            Email: bojanagolubovic.makeup@gmail.com
           </p>
         </div>
       </div>
@@ -41,7 +41,7 @@ const Footer = () => {
         >
           Lokacija:
         </p>
-        <div className={"flex sm:px-22 lg:px-44 lg:mt-4 sm:mt-2 gap-2 mb-4"}>
+        <div className={"flex sm:pl-22 lg:pl-44 lg:mt-4 sm:mt-2 gap-2 mb-4"}>
           <Image
             src="/Home Address.svg"
             width={30}

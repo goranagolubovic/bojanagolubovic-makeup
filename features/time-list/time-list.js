@@ -19,7 +19,7 @@ const TimeList = ({ reservations, setTime }) => {
   };
 
   return (
-    <div className=" flex flex-wrap w-1/2 border-[2px] border-brown text-purple text-1xl  rounded-[10px] py-16 px-32 gap-10 font-roboto font-bold justify-center items-center  ">
+    <div className=" flex flex-wrap w-2/3 sm:w-2/3 lg:w-1/2 border-[2px] border-brown text-purple text-1xl  rounded-[10px] py-8 px-8 sm:px-32 lg:px-32 gap-4 sm:gap-10 lg:gap-10 font-roboto font-bold justify-center items-center  ">
       {availableSlots.map((elem, key) => {
         return (
           <TimeElement
