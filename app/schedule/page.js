@@ -13,6 +13,7 @@ const Schedule = () => {
   const [time, setTime] = useState("");
   const [reservations, setReservations] = useState([]);
   const [message, setMessage] = useState("");
+  const [reservationStatus, setReservationStatus] = useState("");
 
   const handleDateChange = (newDate) => {
     const dateFormatted = newDate.toLocaleDateString("fr-CA");
@@ -33,8 +34,16 @@ const Schedule = () => {
   };
 
   useEffect(() => {
-    const res = getReservations();
-  }, [selectedDate]);
+    if (time === "") {
+      const res = getReservations();
+    }
+  }, [selectedDate, time]);
+
+  useEffect(() => {
+    if (reservationStatus === "success") {
+      const res = getReservations();
+    }
+  }, [reservationStatus]);
 
   return (
     <div className="w-full flex justify-center items-center my-10 flex-col gap-10">
@@ -49,10 +58,16 @@ const Schedule = () => {
       <ReservationForm
         selectedDate={selectedDate}
         time={time}
+        setTime={setTime}
         setMessage={setMessage}
+        setReservationStatus={setReservationStatus}
       />
-      {message !== undefined && message !== "" && (
-        <PopUp message={message} togglePopup={togglePopup} />
+      {message !== "" && (
+        <PopUp
+          message={message}
+          togglePopup={togglePopup}
+          type={reservationStatus}
+        />
       )}
     </div>
   );

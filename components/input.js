@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Input = ({ color, onChange, name }) => {
-  console.log(color);
+const Input = ({ color, onChange, name, formReset }) => {
+  const [value, setValue] = useState("");
+  const [reset, setReset] = useState(false);
+
+  useEffect(() => {
+    setReset(true);
+  }, [formReset]);
+
+  const handleInputChange = (e) => {
+    setValue(e.target.value);
+    onChange(e);
+  };
+
+  useEffect(() => {
+    if (reset) {
+      setValue("");
+      setReset(false);
+    }
+  }, [reset]);
+
   return (
     <input
       name={name}
-      onChange={onChange}
+      value={value}
+      onChange={handleInputChange}
       className={`${color} focus:border-transparent focus:outline-none px-8`}
     />
   );

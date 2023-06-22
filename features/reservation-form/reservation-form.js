@@ -17,23 +17,25 @@ import { URL } from "@/constants/constants";
 import { formatDate } from "@/helpers";
 
 const userSchema = object().shape({
-  // ime: string().required(REQ_FIELD),
-  // // .min(2, MIN_NAME_MESSAGE)
-  // // .max(16, MAX_NAME_MESSAGE),
-  // prezime: string().required(REQ_FIELD),
-  // // .min(3, MIN_SURNAME_MESSAGE)
-  // // .max(40, MAX_SURNAME_MESSAGE),
-  // broj: string().required(REQ_FIELD),
-  // email: string().required(REQ_FIELD).max(30).email(EMAIL_FORMAT),
+  ime: string().required(REQ_FIELD),
+  prezime: string().required(REQ_FIELD),
+  brojTelefona: string().matches(/^\d+$/, TEL_FORMAT).required(REQ_FIELD),
+  email: string().required(REQ_FIELD).max(30).email(EMAIL_FORMAT),
 });
 
-const ReservationForm = ({ selectedDate, time, setMessage }) => {
+const ReservationForm = ({
+  selectedDate,
+  time,
+  setTime,
+  setMessage,
+  setReservationStatus,
+}) => {
   const [fieldErrors, setFieldErrors] = useState({});
-
+  const [formReset, setFormReset] = useState(false);
   const [formData, setFormData] = useState({
     ime: "",
     prezime: "",
-    broj: "",
+    brojTelefona: "",
     email: "",
   });
 
@@ -41,16 +43,24 @@ const ReservationForm = ({ selectedDate, time, setMessage }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const resetForm = () => {
+    setFormReset(!formReset);
+    setFormData({
+      ime: "",
+      prezime: "",
+      brojTelefona: "",
+      email: "",
+    });
+    setTime("");
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (time === "") {
-      setMessage(TIME_REQ);
-      return;
-    }
+    setFieldErrors({});
     const reservation = {
       isReserved: true,
       [selectedDate]: time,
-      brojTelefona: formData.broj,
+      brojTelefona: formData.brojTelefona,
       ime: formData.ime,
       prezime: formData.prezime,
       email: formData.email,
@@ -58,7 +68,11 @@ const ReservationForm = ({ selectedDate, time, setMessage }) => {
 
     try {
       await userSchema.validate(reservation, { abortEarly: false });
-
+      if (time === "") {
+        setMessage(TIME_REQ);
+        setReservationStatus("error");
+        return;
+      }
       const reservationResponsePromise = await fetch(
         URL + "/api/reservations",
         {
@@ -80,11 +94,15 @@ const ReservationForm = ({ selectedDate, time, setMessage }) => {
           method: "POST",
           body: JSON.stringify(emailData),
         });
-        const mess = reservationResponse.message.RESERVATION_SUCCESS;
+        const mess = await reservationResponse.message.RESERVATION_SUCCESS;
         console.log(reservationResponse.message.RESERVATION_SUCCESS);
         setMessage(mess);
+        setReservationStatus("success");
+        resetForm();
+      } else {
+        setReservationStatus("error");
+        setMessage(reservationResponse.message.DB_ERROR);
       }
-      setMessage(reservationResponse.message.DB_ERROR);
     } catch (error) {
       // If validation fails, handle the error
       console.log("Form validation error:", error);
@@ -110,6 +128,7 @@ const ReservationForm = ({ selectedDate, time, setMessage }) => {
         name="ime"
         color="bg-gray"
         onChange={handleInputChange}
+        formReset={formReset}
         error={fieldErrors.ime}
       />
       <FormElement
@@ -117,20 +136,23 @@ const ReservationForm = ({ selectedDate, time, setMessage }) => {
         color="bg-gray"
         name="prezime"
         onChange={handleInputChange}
+        formReset={formReset}
         error={fieldErrors.prezime}
       />
       <FormElement
         label="*Broj telefona"
-        name="broj"
+        name="brojTelefona"
         color="bg-gray"
         onChange={handleInputChange}
-        error={fieldErrors.broj}
+        formReset={formReset}
+        error={fieldErrors.brojTelefona}
       />
       <FormElement
         label="*Email"
         name="email"
         color="bg-gray"
         onChange={handleInputChange}
+        formReset={formReset}
         error={fieldErrors.email}
       />
       <Button href="" text="Zakaži termin" />

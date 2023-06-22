@@ -12,7 +12,7 @@ export const menuOptions = [
     title: "Cjenovnik",
   },
   {
-    link: "gallery",
+    link: "makeup-gallery",
     title: "Galerija",
   },
   {
