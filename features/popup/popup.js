@@ -1,6 +1,8 @@
 "use client";
 import { React, useState, useEffect } from "react";
 import Image from "next/image";
+import cancelImage from "../../public/Cancel.png";
+import succesImage from "../../public/Success.png";
 
 const PopUp = ({ togglePopup, message, type }) => {
   const [image, setImage] = useState("");
@@ -8,11 +10,11 @@ const PopUp = ({ togglePopup, message, type }) => {
   const [colorBg, setColorBg] = useState("");
   useEffect(() => {
     if (type === "error") {
-      setImage("/Cancel.png");
+      setImage(cancelImage);
       setColorText("text-red-800");
       setColorBg("bg-red-800");
     } else if (type === "success") {
-      setImage("/Success.png");
+      setImage(succesImage);
       setColorText("text-green-800");
       setColorBg("bg-green-800");
     }
@@ -23,7 +25,14 @@ const PopUp = ({ togglePopup, message, type }) => {
       <div className="absolute rounded-[20px] left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4 sm:w-1/2 lg:w-1/4 bg-white p-4 sm:p-10 lg:p-10 text-1xl sm:text-2xl lg:text-2xl text-center">
         <div className="w-full flex justify-center items-center mb-10">
           {image !== "" && (
-            <Image src={image} width={60} height={60} alt="error" />
+            <Image
+              src={image}
+              style={{
+                width: "40%",
+                height: "auto",
+              }}
+              alt="error"
+            />
           )}
         </div>
         <p className={`${colorText} font-roboto `}>{message}</p>

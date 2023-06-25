@@ -2,6 +2,7 @@
 import { React, useEffect, useRef } from "react";
 import Image from "next/image";
 import Typed from "typed.js";
+import shadows from "../../public/Shadows.svg";
 
 const WelcomeQuote = () => {
   const typingRef = useRef(null);
@@ -33,7 +34,15 @@ const WelcomeQuote = () => {
         ></p>
       </div>
       <div className="flex items-center justify-center px-16 lg:px-8 sm:px-16">
-        <Image src="/Shadows.svg" alt="shadows" width={600} height={600} />
+        <Image
+          src={shadows}
+          alt="shadows"
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
       </div>
     </div>
   );

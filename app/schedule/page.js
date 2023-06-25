@@ -6,6 +6,9 @@ import TimeList from "../../features/time-list/time-list";
 import ReservationForm from "../../features/reservation-form/reservation-form";
 import { URL } from "@/constants/constants";
 import PopUp from "@/features/popup/popup";
+import number1 from "../../public/Number 1.png";
+import number2 from "../../public/Number 2.png";
+import number3 from "../../public/Number 3.png";
 
 const Schedule = () => {
   const todayDate = new Date().toLocaleDateString("fr-CA");
@@ -47,14 +50,14 @@ const Schedule = () => {
 
   return (
     <div className="w-full flex justify-center items-center my-10 flex-col gap-10">
-      <Instruction text="Izaberite datum na kalendaru" image="/Number 1.png" />
+      <Instruction text="Izaberite datum na kalendaru" image={number1} />
       <CustomCalendar onDateChange={handleDateChange} />
       <Instruction
         text="Odaberite jedan od preostalih termina za odabrani datum"
-        image="/Number 2.png"
+        image={number2}
       />
       <TimeList reservations={reservations} setTime={setTime} />
-      <Instruction text="Unesite lične podatke" image="/Number 3.png" />
+      <Instruction text="Unesite lične podatke" image={number3} />
       <ReservationForm
         selectedDate={selectedDate}
         time={time}

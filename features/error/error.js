@@ -1,6 +1,7 @@
 import React from "react";
 import { ERROR } from "../../constants/messages/error-messages";
 import Image from "next/image";
+import errorImage from "../../public/Error.png";
 
 const Error = ({ message }) => {
   return (
@@ -12,7 +13,7 @@ const Error = ({ message }) => {
       <p className={"text-1xl sm:text-1xl lg:text-4xl mb-20 font-bold"}>
         {ERROR}
       </p>
-      <Image src={"/Error.png"} alt="error" width={200} height={200} />
+      <Image src={errorImage} alt="error" />
       <p className={"text-sm sm:text-sm lg:text-2xl"}>{message}</p>
     </div>
   );
