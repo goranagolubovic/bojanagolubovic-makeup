@@ -13,7 +13,15 @@ const Error = ({ message }) => {
       <p className={"text-1xl sm:text-1xl lg:text-4xl mb-20 font-bold"}>
         {ERROR}
       </p>
-      <Image src={errorImage} alt="error" />
+      <Image
+        src={errorImage}
+        alt="error"
+        sizes="100vw"
+        style={{
+          width: "40%",
+          height: "auto",
+        }}
+      />
       <p className={"text-sm sm:text-sm lg:text-2xl"}>{message}</p>
     </div>
   );
