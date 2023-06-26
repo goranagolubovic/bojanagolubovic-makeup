@@ -40,6 +40,7 @@ const ReservationForm = ({
   });
 
   const handleInputChange = (e) => {
+    e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -90,7 +91,7 @@ const ReservationForm = ({
           vrijeme: time,
           email: formData.email,
         };
-        const emailResponse = await fetch(URL + "/api/send-email", {
+        const emailResponse = await fetch(URL + "/api/send-email/reservation", {
           method: "POST",
           body: JSON.stringify(emailData),
         });

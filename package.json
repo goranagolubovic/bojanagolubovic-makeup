@@ -10,10 +10,13 @@
     "preview-email": "email dev"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.0.0",
     "@react-email/components": "^0.0.7",
     "@react-email/container": "^0.0.8",
     "@react-email/html": "^0.0.4",
+    "@react-email/img": "0.0.5",
     "@react-email/section": "^0.0.9",
+    "@react-email/tailwind": "^0.0.8",
     "@react-email/text": "^0.0.5",
     "autoprefixer": "10.4.14",
     "email-validator": "^2.0.4",

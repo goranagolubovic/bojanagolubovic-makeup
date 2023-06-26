@@ -1,8 +1,8 @@
 import { render } from "@react-email/render";
-import EmailTemplate from "../../../emails/email-template";
-import { sendEmail } from "../../../lib/email";
+import EmailTemplate from "../../../../emails/email-template";
+import { sendEmail } from "../../../../lib/email";
 import { NextResponse } from "next/server";
-import { EMAIL_SEND } from "@/constants/messages/success-messages";
+import { EMAIL_SEND } from "../../../../constants/messages/success-messages";
 
 export async function POST(request) {
   const data = await request.json();

@@ -6,3 +6,10 @@ export const formatDate = (date) => {
   }/${newDate.getFullYear()}`;
   return formattedDate;
 };
+
+export const convertPriceToEuro = (price) => {
+  const exchangeRate = 0.51;
+  const formattedPrice = price.split(" ")[0];
+  const priceInEuro = parseFloat(formattedPrice) * exchangeRate;
+  return priceInEuro;
+};
