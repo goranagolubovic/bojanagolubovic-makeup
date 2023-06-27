@@ -10,3 +10,5 @@ export const GIFT_CARD_IMPORTANT_NOTE =
 export const SERIAL_NUMBER = "Serijski broj:";
 export const PURCHASE_SUCCESS =
   "Uspješno ste kupili poklon bon. Poklon bon je poslat na Vašu email adresu.";
+export const FROM = "Od";
+export const TO = "Za";

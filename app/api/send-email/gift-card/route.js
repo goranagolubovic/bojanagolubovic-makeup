@@ -6,13 +6,14 @@ import { PURCHASE_SUCCESS } from "@/constants/messages/success-messages";
 
 export async function POST(request) {
   const data = await request.json();
-  console.log(data);
   let object;
   await sendEmail({
     to: data.email,
     subject: "Poklon bon",
     html: render(
       <GiftCardTemplate
+        from={data.from}
+        to={data.to}
         imagePath={data.templateImage}
         serialNumber={data.serialNumber}
       />

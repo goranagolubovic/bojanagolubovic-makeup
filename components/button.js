@@ -1,14 +1,26 @@
 import React from "react";
 import Link from "next/link";
 
-const Button = ({ text, href }) => {
+const Button = ({ text, href, onClick }) => {
   console.log(href);
   return (
-    <div className="bg-gray rounded rounded-[20px] text-1xl py-2 px-6 sm:px-6 lg:px-16 font-bold text-purple hover:bg-purple hover:text-white transition-all duration-300 ease-in-out transform hover:scale-105">
+    <div>
       {href ? (
-        <Link href={href}>{text}</Link>
+        <Link
+          href={href}
+          className="bg-gray px-16 py-2 rounded rounded-[20px] text-1xl  font-bold text-purple hover:bg-purple hover:text-white transition-all duration-300 ease-in-out transform hover:scale-105"
+        >
+          {text}
+        </Link>
+      ) : onClick ? (
+        <button onClick={onClick}>{text}</button>
       ) : (
-        <button type="submit">{text}</button>
+        <button
+          type="submit"
+          className="bg-gray px-16 py-2 rounded rounded-[20px] text-1xl  font-bold text-purple hover:bg-purple hover:text-white transition-all duration-300 ease-in-out transform hover:scale-105"
+        >
+          {text}
+        </button>
       )}
     </div>
   );

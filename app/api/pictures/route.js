@@ -1,13 +1,16 @@
-import clientPromise from "../../../lib/mongodb";
-import { DB_CONNECTION_ERROR } from "../../../constants/messages/error-messages";
-
 import { NextResponse } from "next/server";
+import { DB_CONNECTION_ERROR } from "../../../constants/messages/error-messages";
+import getDb from "../../../lib/mongodb";
 
 export async function GET(request) {
-  let db;
   try {
-    const client = await clientPromise;
-    db = client.db("bojanamakeup");
+    const db = await getDb();
+    const data = await db.collection("gallery").find().toArray();
+    const object = {
+      pictures: data,
+      status: 200,
+    };
+    return NextResponse.json(object);
   } catch (error) {
     const errorObject = {
       message: DB_CONNECTION_ERROR,
@@ -15,10 +18,4 @@ export async function GET(request) {
     };
     return NextResponse.json(errorObject);
   }
-  const data = await db.collection("gallery").find().toArray();
-  const object = {
-    pictures: data,
-    status: 200,
-  };
-  return NextResponse.json(object);
 }

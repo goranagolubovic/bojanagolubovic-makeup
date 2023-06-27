@@ -1,12 +1,8 @@
 "use client";
 import { React, useState } from "react";
-import { object, string, number, matches } from "yup";
+import { object, string } from "yup";
 import {
   EMAIL_FORMAT,
-  MAX_NAME_MESSAGE,
-  MAX_SURNAME_MESSAGE,
-  MIN_NAME_MESSAGE,
-  MIN_SURNAME_MESSAGE,
   REQ_FIELD,
   TEL_FORMAT,
   TIME_REQ,
