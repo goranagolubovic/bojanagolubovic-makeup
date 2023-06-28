@@ -8,11 +8,11 @@ const Menu = (props) => {
   const pathname = usePathname();
 
   return (
-    <nav className="w-full flex justify-end font-roboto lg:text-2xl sm:text-1xl">
-      <div className="w-full justify-end px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+    <nav className="w-full flex justify-end font-roboto lg:text-2xl sm:text-1xl ">
+      <div className="w-full justify-center px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
         <div>
-          <div className="flex items-center justify-end py-3 md:py-5 md:block">
-            <div className="md:hidden">
+          <div className="flex items-center justify-end py-3 md:py-5 md:block ">
+            <div className="md:hidden ">
               <button
                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={() => setNavbar(!navbar)}
@@ -52,11 +52,11 @@ const Menu = (props) => {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+            className={` w'full flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-10 md:space-y-0">
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-12 md:space-y-0">
               {props.menuOptions.map((elem) => {
                 const pattern = /^\/elem\.link(\/.*)?$/;
                 const isActive =

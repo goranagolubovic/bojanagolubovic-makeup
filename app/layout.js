@@ -14,7 +14,7 @@ const roboto = Roboto({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-roboto",
-  weight: "400",
+  weight: ["400", "700"],
 });
 
 const qwigley = Qwigley({

@@ -22,7 +22,7 @@ const AboutMe = () => {
         <PersonalInfos />
       </div>
       <CertificatesList title="Moji sertifikati">
-        <Carousel items={certificates} />
+        <Carousel items={certificates} type="certificatesCarousel" />
       </CertificatesList>
     </div>
   );

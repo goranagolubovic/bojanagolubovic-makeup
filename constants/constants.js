@@ -16,8 +16,8 @@ export const menuOptions = [
     title: "Galerija",
   },
   {
-    link: "reviews",
-    title: "Recenzije",
+    link: "client-feedback",
+    title: "Utisci klijenata",
   },
   {
     link: "gift-card",
@@ -51,3 +51,6 @@ export const slots = [
 export const URL = "http://localhost:3001";
 export const pricesCardTitle = "CJENOVNIK";
 export const giftCardTitlePart = "poklon bon";
+export const feedbackTitle = "ŠTA KLIJENTI KAŽU O MENI:";
+export const leaveAFeedback =
+  "*Vaše mišljenje mi je od izuzetne važnosti. Značilo bi mi kada biste odvojili par sekundi Vašeg vremena i ostavili svoj 'feedback'.";
