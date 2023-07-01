@@ -12,3 +12,4 @@ export const PURCHASE_SUCCESS =
   "Uspješno ste kupili poklon bon. Poklon bon je poslat na Vašu email adresu.";
 export const FROM = "Od";
 export const TO = "Za";
+export const POST_SUCCESS = "Vaše mišljenje je zabilježeno. Hvala Vam!";

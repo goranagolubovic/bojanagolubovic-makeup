@@ -3,6 +3,7 @@ import { Inter, Roboto, Qwigley, Pinyon_Script } from "next/font/google";
 import { Great_Vibes } from "next/font/google";
 import Header from "../features/header/header";
 import Footer from "../features/footer/footer";
+import Providers from "@/components/providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,9 +56,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${roboto.variable} ${qwigley.variable} ${greatvibes.variable} ${pinyonscript.variable}`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

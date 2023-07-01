@@ -54,3 +54,5 @@ export const giftCardTitlePart = "poklon bon";
 export const feedbackTitle = "ŠTA KLIJENTI KAŽU O MENI:";
 export const leaveAFeedback =
   "*Vaše mišljenje mi je od izuzetne važnosti. Značilo bi mi kada biste odvojili par sekundi Vašeg vremena i ostavili svoj 'feedback'.";
+export const signInWithGoogle =
+  " NAPOMENA: Ova akcija je dozvoljena samo prijavljenim korisnicima. Da biste ostavili komentar, prijavite se putem svoga Google računa.";

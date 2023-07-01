@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import camera from "../public/Camera.png";
 
-const ImageUpload = ({ text }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
+const ImageUpload = ({ text, onImageChange, formReset, error, name }) => {
+  const [selectedImage, setSelectedImage] = useState();
+  const [reset, setReset] = useState(false);
   const [showCamera, setShowCamera] = useState(true);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -12,6 +15,7 @@ const ImageUpload = ({ text }) => {
       if (reader.readyState === 2) {
         setSelectedImage(reader.result);
         setShowCamera(false);
+        onImageChange(reader.result);
       }
     };
 
@@ -20,21 +24,36 @@ const ImageUpload = ({ text }) => {
     }
   };
 
+  useEffect(() => {
+    setReset(true);
+  }, [formReset]);
+
+  useEffect(() => {
+    if (reset) {
+      setSelectedImage("");
+      setShowCamera(true);
+      setReset(false);
+    }
+  }, [reset]);
+
   return (
-    <div className="flex flex-col justify-center mb-16 gap-2">
+    <div className="flex flex-col justify-center mb-8 sm:mb-8 lg:mb-16 gap-2 items-center">
       <div
-        className="image-upload flex flex-col  justify-center items-center  w-32 h-32 bg-gray rounded-full bg-cover hover:opacity-40 transition-all duration-10` "
+        className="image-upload flex flex-col  justify-center items-center h-16 w-16 sm:h-32 sm:w-32 lg:w-32 lg:h-32 bg-gray rounded-full bg-cover hover:opacity-40 transition-all duration-10` "
         onMouseOver={() => setShowCamera(true)}
-        onMouseLeave={() => setShowCamera(false)}
+        onMouseLeave={() => {
+          if (selectedImage !== "") setShowCamera(false);
+        }}
         style={{
           backgroundImage: `url(${selectedImage})`,
         }}
       >
         <label
           htmlFor="image-input"
-          className="image-upload-label rounded-full bg-gray-200 w-32 h-32 flex items-center justify-center"
+          className="image-upload-label rounded-full bg-gray-200 h-16 w-16 sm:h-32 sm:w-32 lg:w-32 lg:h-32 flex items-center justify-center"
         >
           <input
+            name={name}
             type="file"
             id="image-input"
             className="hidden"
@@ -42,9 +61,12 @@ const ImageUpload = ({ text }) => {
           />
           {showCamera && (
             <Image
-              src="/Camera.png"
-              width={32}
-              height={32}
+              src={camera}
+              sizes="5vw"
+              style={{
+                width: "50%",
+                height: "50%",
+              }}
               alt="choose_photo"
               className="z-10"
             />
@@ -60,9 +82,12 @@ const ImageUpload = ({ text }) => {
           )} */}
         </label>
       </div>
-      <label className="text-brown text-center font-bold font-roboto">
-        {text}
-      </label>
+      <div className="flex flex-col justify-center">
+        <p className="text-brown text-xs sm:text-xs lg:text-xl text-center font-bold font-roboto">
+          {text}
+        </p>
+        <p className="text-red-300 text-1xl text-center">{error}</p>
+      </div>
     </div>
   );
 };

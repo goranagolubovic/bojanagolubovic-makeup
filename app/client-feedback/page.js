@@ -1,44 +1,27 @@
 import Carousel from "@/components/carousel";
-import { feedbackTitle, leaveAFeedback } from "@/constants/constants";
+import { URL, feedbackTitle, leaveAFeedback } from "@/constants/constants";
 import FeedbackForm from "@/features/feedback-form/feedback-form";
-import React from "react";
+import { React } from "react";
 
-const items = [
-  {
-    image: "/gorana.jpg",
-    nameAndSurname: "Gorana Golubovic",
-    feedback:
-      '"Bojana je izuzetan profesionalac. Predana je poslu, izuzetno precizna i zna kako da prilagodi sminku Vasem licu. Sve preporuke."',
-  },
-  {
-    image: "/gorana.jpg",
-    nameAndSurname: "Gorana Golubovic",
-    feedback:
-      '"Bojana je izuzetan profesionalac. Predana je poslu, izuzetno precizna i zna kako da prilagodi sminku Vasem licu. Sve preporuke."',
-  },
-  {
-    image: "/gorana.jpg",
-    nameAndSurname: "Gorana Golubovic",
-    feedback:
-      '"Bojana je izuzetan profesionalac. Predana je poslu, izuzetno precizna i zna kako da prilagodi sminku Vasem licu. Sve preporuke."',
-  },
-  {
-    image: "/gorana.jpg",
-    nameAndSurname: "Gorana Golubovic",
-    feedback:
-      '"Bojana je izuzetan profesionalac. Predana je poslu, izuzetno precizna i zna kako da prilagodi sminku Vasem licu. Sve preporuke."',
-  },
-];
-const ClientFeedback = () => {
+const getData = async () => {
+  const dataPromise = await fetch(URL + "/api/feedbacks", {
+    cache: "no-store",
+  });
+  const data = await dataPromise.json();
+  return data.feedbacks;
+};
+
+const ClientFeedback = async () => {
+  const items = await getData();
   return (
-    <div className="w-full flex flex-col justify-center items-center my-8 gap-12 ">
-      <p className="text-purple font-roboto font-bold text-4xl">
+    <div className="w-full flex flex-col justify-center items-center my-8 gap-2 sm:gap-8  lg:gap-12 ">
+      <p className="text-purple font-roboto font-bold text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl">
         {feedbackTitle}
       </p>
-      <div className="w-1/3">
+      <div className="w-3/4 sm:w-2/3 lg:w-1/3">
         <Carousel items={items} type="feedbackCarousel" />
       </div>
-      <p className="text-purple font-roboto font-bold text-1xl w-2/3 text-center mt-16 mb-8">
+      <p className="text-purple font-roboto font-bold text-base w-2/3 text-center mt-16 mb-8">
         {leaveAFeedback}
       </p>
       <FeedbackForm />

@@ -35,9 +35,9 @@ const feedbackSettings = {
   pauseOnHover: true,
   responsive: [
     {
-      breakpoint: 768, // Adjust the breakpoint as needed
+      breakpoint: 768,
       settings: {
-        slidesToShow: 1, // On smaller devices, show 1 slide
+        slidesToShow: 1,
       },
     },
   ],
@@ -50,19 +50,20 @@ const Carousel = ({ items, type }) => {
   return (
     <div className="w-full lg:w-5/6 mx-auto">
       <Slider {...settings}>
-        {items.map((item, index) => (
-          <div key={index}>
-            {type === "certificatesCarousel" ? (
-              <Image width={450} height={300} src={item} alt={item} />
-            ) : (
-              <FeedBackCard
-                clientImage={item.image}
-                clientNameAndSurname={item.nameAndSurname}
-                clientFeedback={item.feedback}
-              />
-            )}
-          </div>
-        ))}
+        {items.length != 0 &&
+          items.map((item, index) => (
+            <div key={index}>
+              {type === "certificatesCarousel" ? (
+                <Image width={450} height={300} src={item} alt={item} />
+              ) : (
+                <FeedBackCard
+                  clientImage={item.image}
+                  clientNameAndSurname={item.nameAndSurname}
+                  clientFeedback={item.feedback}
+                />
+              )}
+            </div>
+          ))}
       </Slider>
     </div>
   );
