@@ -26,7 +26,7 @@ const certificatesSettings = {
 };
 const feedbackSettings = {
   dots: true,
-  infinite: false,
+  infinite: true,
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
@@ -54,7 +54,7 @@ const Carousel = ({ items, type }) => {
           items.map((item, index) => (
             <div key={index}>
               {type === "certificatesCarousel" ? (
-                <Image width={450} height={300} src={item} alt={item} />
+                <Image width={480} height={200} src={item} alt={item} />
               ) : (
                 <FeedBackCard
                   clientImage={item.image}

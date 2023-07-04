@@ -74,6 +74,7 @@ const GiftCardForm = ({ price, templateImage }) => {
       };
 
       if (details.status === "COMPLETED") {
+        console.log("sending of email");
         const emailResponse = await fetch(URL + "/api/send-email/gift-card", {
           method: "POST",
           body: JSON.stringify(emailData),
@@ -92,16 +93,12 @@ const GiftCardForm = ({ price, templateImage }) => {
       await userSchema.validate(formData, { abortEarly: false });
       setShowPayPallButtons(true);
     } catch (error) {
-      // If validation fails, handle the error
       console.log("Form validation error:", error);
-
-      // Extract individual field errors from Yup validation error
       const fieldErrors = {};
       error.inner.forEach((err) => {
         fieldErrors[err.path] = err.message;
       });
 
-      // Update the state with the field errors
       setFieldErrors(fieldErrors);
     }
   };

@@ -10,7 +10,7 @@ const WelcomeQuote = () => {
   useEffect(() => {
     const options = {
       strings: ["Bobbie Brown"],
-      typeSpeed: 50,
+      typeSpeed: 70,
       loop: false,
       showCursor: false,
     };
@@ -29,7 +29,7 @@ const WelcomeQuote = () => {
           PRETTIER AND MORE CONFIDENT”
         </p>
         <p
-          className="font-qwigley text-brown sm:text-2xl lg:text-4xl text-center"
+          className="font-qwigley text-brown text-2xl sm:text-4xl lg:text-5xl text-center"
           ref={typingRef}
         ></p>
       </div>
@@ -42,6 +42,7 @@ const WelcomeQuote = () => {
             width: "100%",
             height: "auto",
           }}
+          priority
         />
       </div>
     </div>

@@ -6,7 +6,7 @@ const PictureList = ({ pictures }) => {
     <div className="flex justify-center mb-20 mt-20  flex-wrap gap-24 sm:gap-24 lg:gap-48 w-full">
       {pictures.map((elem) => {
         return (
-          <Image src={elem.image} alt={elem.image} width={450} height={450} />
+          <Image src={elem.image} alt={elem.image} width={500} height={550} />
         );
       })}
     </div>

@@ -56,3 +56,7 @@ export const leaveAFeedback =
   "*Vaše mišljenje mi je od izuzetne važnosti. Značilo bi mi kada biste odvojili par sekundi Vašeg vremena i ostavili svoj 'feedback'.";
 export const signInWithGoogle =
   " NAPOMENA: Ova akcija je dozvoljena samo prijavljenim korisnicima. Da biste ostavili komentar, prijavite se putem svoga Google računa.";
+export const reservationInProgress =
+  "Rezervacija termina u toku. Molimo sačekajte...";
+export const settingFeedbackInProgress =
+  "Dodavanje komentara u toku. Molimo sačekajte...";
