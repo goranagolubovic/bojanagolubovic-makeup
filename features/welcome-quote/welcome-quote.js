@@ -22,9 +22,9 @@ const WelcomeQuote = () => {
   }, []);
 
   return (
-    <div className="bg-white flex flex-col sm:flex-row items-center justify-center sm:mx-32 lg:mx-64 my-8 rounded rounded-[10px]">
-      <div className="flex flex-col items-center justify-center w-2/3 gap-10">
-        <p className="font-roboto text-brown font-extrabold sm:text-2xl lg:text-4xl text-center">
+    <div className="bg-white flex flex-col sm:flex-row lg:flex-row items-center justify-center mx-8 sm:mx-32 lg:mx-64 my-8 rounded rounded-[10px]">
+      <div className="flex flex-col items-center justify-center w-2/3 sm:w-3/4 lg:w-2/3 gap-10">
+        <p className="font-roboto text-brown font-extrabold text-1xl sm:text-2xl lg:text-4xl text-center">
           “MAKEUP IS A WAY FOR A WOMAN TO LOOK AND FEEL LIKE HERSELF, ONLY
           PRETTIER AND MORE CONFIDENT”
         </p>
@@ -33,7 +33,7 @@ const WelcomeQuote = () => {
           ref={typingRef}
         ></p>
       </div>
-      <div className="flex items-center justify-center px-16 lg:px-8 sm:px-16">
+      <div className="flex items-center justify-center px-16 lg:px-8 sm:px-2">
         <Image
           src={shadows}
           alt="shadows"

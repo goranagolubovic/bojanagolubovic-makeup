@@ -2,7 +2,7 @@
 import Button from "@/components/button";
 import FormElement from "@/components/form-element";
 import ImageUpload from "@/components/image-upload";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import SignInButton from "@/components/sign-in-button";
 import { URL, signInWithGoogle } from "@/constants/constants";
 import PopUp from "../popup/popup";
@@ -10,6 +10,7 @@ import { object, string } from "yup";
 import { REQ_FIELD } from "../../constants/messages/error-messages";
 import Spinner from "@/components/spinner";
 import { settingFeedbackInProgress } from "@/constants/constants";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const userSchema = object().shape({
   slika: string().required(REQ_FIELD),
@@ -71,14 +72,14 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="w-3/4 sm:w-3/4 lg:w-1/3 h-[500px] sm:h-[700px] lg:h-[700px] bg-white rounded-[20px] px-8 lg:px-16  py-4 sm:py-4 lg:py-8 flex flex-col justify-center items-center">
+    <div className="w-3/4 sm:w-3/4 lg:w-1/3 h-[500px] sm:h-[700px] lg:h-[700px] bg-white rounded-[20px] px-8 sm:px-12 lg:px-16  py-2 sm:py-4 lg:py-8 flex flex-col justify-center items-center">
       {session === "" && (
         <p className="text-brown text-1xl mb-8">{signInWithGoogle}</p>
       )}
 
       {session !== "" && (
         <form
-          className="w-full h-[500px] sm:h-[700px] lg:h-[700px] flex flex-col  items-center py-8"
+          className="w-full h-[500px] sm:h-[700px] lg:h-[700px] flex flex-col  items-center py-4 sm:py-4 py-8"
           onSubmit={handleFormSubmit}
         >
           {isSubmitted ? (
@@ -86,7 +87,7 @@ const FeedbackForm = () => {
           ) : (
             <>
               {session.user && (
-                <p className="text-purple font-bold text-1xl lg:text-2xl pt-4  pb-8 sm:pb-8 lg:pb-12">
+                <p className="text-purple font-bold text-1xl lg:text-2xl   pt-2 lg:pt-4  pb-4 sm:pb-8 lg:pb-12">
                   {session.user.name}
                 </p>
               )}

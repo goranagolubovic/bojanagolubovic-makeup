@@ -117,7 +117,7 @@ const ReservationForm = ({
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="bg-white w-3/4 sm:w-2/3 lg:w-1/3 h-[400px] lg:h-[500px] sm:h-[500px]  py-16 flex justify-center flex-col items-center rounded-[20px]"
+      className="bg-white px-8 sm:px-0 lg:px-0 w-5/6 md:w-2/3  lg:w-1/2 xl:w-1/3 h-[400px] lg:h-[500px] sm:h-[500px]  py-16 flex justify-center flex-col items-center rounded-[20px]"
     >
       {isSubmitted ? (
         <Spinner tip={reservationInProgress} />
@@ -140,7 +140,7 @@ const ReservationForm = ({
             error={fieldErrors.prezime}
           />
           <FormElement
-            label="*Broj telefona"
+            label="*Telefon"
             name="brojTelefona"
             color="bg-gray"
             onChange={handleInputChange}

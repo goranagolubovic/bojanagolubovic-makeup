@@ -8,7 +8,7 @@ const PricesCard = ({ prices, title }) => {
       </p>
       {prices.map((elem) => {
         return (
-          <div className="flex flex-row gap-5 sm:gap-5 lg:gap-20 justify-between  mx-5 sm:mx-5 lg:mx-60 text-1xl sm:text-1xl lg:text-2xl mb-2 sm:mb-2 lg:mb-5">
+          <div className="flex flex-row gap-5 sm:gap-5 lg:gap-20 justify-between  mx-8 sm:mx-32 lg:mx-60 text-1xl sm:text-1xl lg:text-2xl mb-2 sm:mb-2 lg:mb-5">
             <p>{elem.title}</p>
             <p>{elem.price}</p>
           </div>

@@ -1,5 +1,6 @@
 import "./globals.css";
-import { Inter, Roboto, Qwigley, Pinyon_Script } from "next/font/google";
+import { Inter, Roboto, Qwigley } from "next/font/google";
+import { Pinyon_Script } from "next/font/google";
 import { Great_Vibes } from "next/font/google";
 import Header from "../features/header/header";
 import Footer from "../features/footer/footer";
@@ -37,11 +38,13 @@ const pinyonscript = Pinyon_Script({
   display: "swap",
   variable: "--font-pinyonscript",
   weight: "400",
+  preload: true,
 });
 
 export const metadata = {
   title: "Bojana Golubovic Makeup",
-  description: "nesto",
+  description:
+    "Jednostavno zakaži termin za šminkanje, kupi poklon bon ili pronađi pregršt korisnih makeup savjeta",
 };
 
 export default function RootLayout({ children }) {

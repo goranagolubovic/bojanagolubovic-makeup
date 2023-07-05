@@ -6,7 +6,6 @@ import Link from "next/link";
 const Menu = (props) => {
   const [navbar, setNavbar] = useState(false);
   const pathname = usePathname();
-
   return (
     <nav className="w-full flex justify-end font-roboto lg:text-2xl sm:text-1xl ">
       <div className="w-full justify-center px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
@@ -58,12 +57,10 @@ const Menu = (props) => {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-12 md:space-y-0">
               {props.menuOptions.map((elem) => {
-                const pattern = /^\/elem\.link(\/.*)?$/;
                 const isActive =
-                  elem.link === "/"
-                    ? pathname === elem.link
-                    : pathname === "/" + elem.link ||
-                      pathname.startsWith("/" + elem.link + "/");
+                  elem.link === pathname ||
+                  pathname === elem.link ||
+                  pathname.startsWith(elem.link + "/");
                 return (
                   <li
                     className={`text-white ${isActive ? "text-yellow" : ""}`}

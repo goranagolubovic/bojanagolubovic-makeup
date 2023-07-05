@@ -38,19 +38,14 @@ const GiftCardPurchase = async () => {
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),url(${image})`,
         }}
-        className="h-1/3 bg-cover bg-center w-1/3 rounded-[20px] flex  flex-col justify-center items-center my-24 py-8 "
+        className="h-1/3 bg-cover bg-center w-5/6 md:w-1/2 mx-4 lg:w-1/2 xl:w-1/3 rounded-[20px] flex  flex-col justify-center items-center my-24 py-4 lg:py-8 "
       >
-        <p className="font-roboto font-extrabold text-2xl text-brown">
+        <p className="font-roboto font-extrabold text-1xl lg:text-2xl text-brown">
           {title}
         </p>
-        <p className="font-pinyonscript text-4xl text-brown">poklon bon</p>
-        {/* <ReservationForm
-          selectedDate={"22-06-2021"}
-          setMessage={() => {}}
-          setReservationStatus={() => {}}
-          setTime={() => {}}
-          time={"17:00"}
-        /> */}
+        <p className="font-pinyonscript text-3xl lg:text-4xl text-brown">
+          poklon bon
+        </p>
         <GiftCardForm price={price} templateImage={templateImage} />
       </div>
     </div>

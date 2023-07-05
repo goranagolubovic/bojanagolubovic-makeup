@@ -11,6 +11,7 @@ import number2 from "../../public/Number 2.png";
 import number3 from "../../public/Number 3.png";
 import Error from "@/features/error/error";
 
+import "../../app/globals.css";
 const Schedule = () => {
   const todayDate = new Date().toLocaleDateString("fr-CA");
   const [selectedDate, setSelectedDate] = useState(todayDate);

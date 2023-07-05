@@ -4,7 +4,7 @@ import { URL } from "@/constants/constants";
 
 const getMakeupTips = async () => {
   const res = await fetch(URL + "/api/makeup-tips", {
-    cache: "no-store",
+    next: { revalidate: 86400 },
   });
   const data = await res.json();
   return data;

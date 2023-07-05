@@ -18,10 +18,10 @@ const ClientFeedback = async () => {
       <p className="text-purple font-roboto font-bold text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl">
         {feedbackTitle}
       </p>
-      <div className="w-3/4 sm:w-2/3 lg:w-1/3">
+      <div className="w-3/4 sm:w-1/2 lg:w-1/3">
         <Carousel items={items} type="feedbackCarousel" />
       </div>
-      <p className="text-purple font-roboto font-bold text-base w-2/3 text-center mt-16 mb-8">
+      <p className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-xl text-purple font-roboto font-bold text-base w-2/3 text-center mt-16 mb-8">
         {leaveAFeedback}
       </p>
       <FeedbackForm />

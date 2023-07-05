@@ -1,5 +1,5 @@
 "use client";
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import FormElement from "../../components/form-element";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
@@ -7,6 +7,7 @@ import { convertPriceToEuro } from "@/helpers";
 import { URL } from "@/constants/constants";
 import PopUp from "../popup/popup";
 import Button from "@/components/button";
+import { useRouter } from "next/navigation";
 import { object, string } from "yup";
 import {
   EMAIL_FORMAT,
@@ -25,6 +26,7 @@ const GiftCardForm = ({ price, templateImage }) => {
     currency: "EUR",
   };
 
+  const router = useRouter();
   const [message, setMessage] = useState("");
   const priceInEuro = convertPriceToEuro(price);
   const [showPayPallButtons, setShowPayPallButtons] = useState();
@@ -103,10 +105,14 @@ const GiftCardForm = ({ price, templateImage }) => {
     }
   };
 
+  const cancel = () => {
+    router.back();
+  };
+
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="w-full my-16 flex justify-center flex-col items-center"
+      className="w-full my-8 lg:my-16 flex justify-center flex-col items-center"
     >
       <FormElement
         label="*Vaše ime i prezime"
@@ -143,8 +149,9 @@ const GiftCardForm = ({ price, templateImage }) => {
           </PayPalScriptProvider>
         </div>
       ) : (
-        <div className="my-8">
+        <div className="my-8 flex flex-col items-center lg:flex-row gap-4">
           <Button href="" text="Pređi na plaćanje" />
+          <Button onClick={cancel} text="Odustani" />
         </div>
       )}
       {message !== "" && (

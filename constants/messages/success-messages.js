@@ -1,5 +1,5 @@
 export const RESERVATION_EMAIL =
-  "Zahvaljujem Vam se na rezervaciji! Moja adresa je Duška Koščice 25. Molim Vas da pokušate doći par minuta prije samog termina. U slučaju da budete spriječeni doći, molim Vas da otkažete Vaš termin na broj telefona 065184670 ili na email bojanagolubovic.makeup@gmail.com. Za sve dodatne informacije možete me kontaktirati. Nadam se da se vidimo!";
+  "Zahvaljujem Vam se na rezervaciji! Moja adresa je Duška Koščice 25. Molim Vas da pokušate doći par minuta prije samog termina. U slučaju da budete spriječeni doći, molim Vas da otkažete Vaš termin na broj telefona +38765184670 ili na email bojanagolubovic.makeup@gmail.com. Za sve dodatne informacije možete me kontaktirati. Vidimo se!";
 export const EMAIL_SEND = "Uspješno poslan email";
 export const RESERVATION_SUCCESS =
   "Uspješno ste rezervisali termin. Detalji rezervacije su poslani na Vašu email adresu.";
@@ -9,7 +9,7 @@ export const GIFT_CARD_IMPORTANT_NOTE =
   " VAŽNA NAPOMENA: Ne dijelite poklon bon sa trećim osobama, poklon bon ima svoj serijski broj da bi se spriječila zloupotreba istog.";
 export const SERIAL_NUMBER = "Serijski broj:";
 export const PURCHASE_SUCCESS =
-  "Uspješno ste kupili poklon bon. Poklon bon je poslat na Vašu email adresu.";
+  "Zahvaljujem Vam se na kupovini. Poklon bon je poslat na Vašu email adresu.";
 export const FROM = "Od";
 export const TO = "Za";
 export const POST_SUCCESS = "Vaše mišljenje je zabilježeno. Hvala Vam!";

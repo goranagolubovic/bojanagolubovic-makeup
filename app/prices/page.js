@@ -5,7 +5,7 @@ import { pricesCardTitle } from "@/constants/constants";
 import { URL } from "@/constants/constants";
 
 const getPrices = async () => {
-  const res = await fetch(URL + "/api/price-list");
+  const res = await fetch(URL + "/api/prices-list");
   const data = await res.json();
   return data;
 };

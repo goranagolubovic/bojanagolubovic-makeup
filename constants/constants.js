@@ -4,31 +4,31 @@ export const menuOptions = [
     title: "Početna",
   },
   {
-    link: "about-me",
+    link: "/about-me",
     title: "O meni",
   },
   {
-    link: "prices",
+    link: "/prices",
     title: "Cjenovnik",
   },
   {
-    link: "makeup-gallery",
+    link: "/makeup-gallery",
     title: "Galerija",
   },
   {
-    link: "client-feedback",
+    link: "/client-feedback",
     title: "Utisci klijenata",
   },
   {
-    link: "gift-card",
+    link: "/gift-card",
     title: "Poklon bonovi",
   },
   {
-    link: "makeup-tips",
+    link: "/makeup-tips",
     title: "Makeup savjeti",
   },
   {
-    link: "schedule",
+    link: "/schedule",
     title: "Zakaži termin",
   },
 ];
