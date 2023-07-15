@@ -1,9 +1,12 @@
 import React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import instagram from "../../public/Instagram.svg";
 import phone from "../../public/Phone.svg";
 import email from "../../public/Email.svg";
 import address from "../../public/Home Address.svg";
+import { GOOGLE_MAPS_URL, myLocation } from "@/constants/constants";
+
 const Footer = () => {
   return (
     <div
@@ -78,9 +81,12 @@ const Footer = () => {
             }}
             alt="adresa"
           />
-          <p className={"sm:text-1xl lg:text-2xl text-white"}>
+          <Link
+            className={"sm:text-1xl lg:text-2xl text-white"}
+            href={`${GOOGLE_MAPS_URL}${myLocation}`}
+          >
             Adresa: Duška Koščice 25, Banjaluka
-          </p>
+          </Link>
         </div>
       </div>
     </div>

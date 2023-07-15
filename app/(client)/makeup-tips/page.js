@@ -1,5 +1,5 @@
 import React from "react";
-import MakeupTipsList from "../../features/makeup-tips-list/makeup-tips-list";
+import MakeupTipsList from "../../../features/makeup-tips-list/makeup-tips-list";
 import { URL } from "@/constants/constants";
 
 const getMakeupTips = async () => {

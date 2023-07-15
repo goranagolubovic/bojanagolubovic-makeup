@@ -5,6 +5,7 @@ import getDb from "../../../lib/mongodb";
 export async function GET(request) {
   try {
     const db = await getDb();
+    console.log("aa" + (await db.listCollections().toArray()));
     const data = await db.collection("gallery").find().toArray();
     const object = {
       pictures: data,
@@ -12,6 +13,7 @@ export async function GET(request) {
     };
     return NextResponse.json(object);
   } catch (error) {
+    console.log(error);
     const errorObject = {
       message: DB_CONNECTION_ERROR,
       status: 500,

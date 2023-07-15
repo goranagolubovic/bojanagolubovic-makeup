@@ -1,9 +1,9 @@
-import "./globals.css";
+import "../globals.css";
 import { Inter, Roboto, Qwigley } from "next/font/google";
 import { Pinyon_Script } from "next/font/google";
 import { Great_Vibes } from "next/font/google";
-import Header from "../features/header/header";
-import Footer from "../features/footer/footer";
+import Header from "../../features/header/header";
+import Footer from "../../features/footer/footer";
 import Providers from "@/components/providers";
 
 const inter = Inter({
@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
         ></script>
       </head> */}
       <body
-        className={`${inter.variable} ${roboto.variable} ${qwigley.variable} ${greatvibes.variable} ${pinyonscript.variable}`}
+        className={`bg-white ${inter.variable} ${roboto.variable} ${qwigley.variable} ${greatvibes.variable} ${pinyonscript.variable}`}
       >
         <Providers>
           <Header />

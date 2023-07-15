@@ -1,9 +1,9 @@
 import PersonalInfos from "@/components/personalInfos";
 import React from "react";
 import Image from "next/image";
-import CertificatesList from "../../features/certificates/certificates-list";
+import CertificatesList from "../../../features/certificates/certificates-list";
 import Carousel from "@/components/carousel";
-import myPic from "../../public/bojana.svg";
+import myPic from "../../../public/bojana.svg";
 import { URL } from "@/constants/constants";
 
 const getData = async () => {

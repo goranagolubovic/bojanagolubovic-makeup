@@ -1,6 +1,6 @@
 import React from "react";
-import PricesCard from "../../features/prices-card/prices-card";
-import Error from "../../features/error/error";
+import PricesCard from "../../../features/prices-card/prices-card";
+import Error from "../../../features/error/error";
 import { pricesCardTitle } from "@/constants/constants";
 import { URL } from "@/constants/constants";
 

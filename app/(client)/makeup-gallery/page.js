@@ -1,6 +1,6 @@
 import React from "react";
-import PictureList from "../../features/picture-list/picture-list";
-import Error from "../../features/error/error";
+import PictureList from "../../../features/picture-list/picture-list";
+import Error from "../../../features/error/error";
 import { URL } from "@/constants/constants";
 
 const getPictures = async () => {

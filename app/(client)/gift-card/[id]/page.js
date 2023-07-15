@@ -2,7 +2,7 @@
 import { React } from "react";
 import { useParams } from "next/navigation";
 import { URL } from "@/constants/constants";
-import GiftCardForm from "../../../features/gift-card-form/gift-card-form";
+import GiftCardForm from "../../../../features/gift-card-form/gift-card-form";
 import ReservationForm from "@/features/reservation-form/reservation-form";
 
 // const generateStaticParams = async () => {

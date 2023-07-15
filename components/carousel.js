@@ -17,15 +17,14 @@ const certificatesSettings = {
   pauseOnHover: true,
   responsive: [
     {
-      breakpoint: 768, // Adjust the breakpoint as needed
+      breakpoint: 768,
       settings: {
-        slidesToShow: 1, // On smaller devices, show 1 slide
+        slidesToShow: 1,
       },
     },
   ],
 };
-const feedbackSettings = {
-  dots: true,
+const generallySettings = {
   infinite: true,
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -43,27 +42,42 @@ const feedbackSettings = {
   ],
 };
 
-const Carousel = ({ items, type }) => {
+const Carousel = ({ items, type, sliderStyle, containerStyle }) => {
   const settings =
-    type === "certificatesCarousel" ? certificatesSettings : feedbackSettings;
+    type === "certificatesCarousel" ? certificatesSettings : generallySettings;
 
   return (
-    <div className="w-full lg:w-5/6 mx-auto">
-      <Slider {...settings}>
-        {items.length != 0 &&
-          items.map((item, index) => (
-            <div key={index}>
-              {type === "certificatesCarousel" ? (
-                <Image width={480} height={200} src={item} alt={item} />
-              ) : (
-                <FeedBackCard
-                  clientImage={item.image}
-                  clientNameAndSurname={item.nameAndSurname}
-                  clientFeedback={item.feedback}
-                />
-              )}
-            </div>
-          ))}
+    <div className={containerStyle}>
+      <Slider {...settings} className={sliderStyle}>
+        {items.map((item, index) => (
+          <div key={index}>
+            {(() => {
+              switch (type) {
+                case "certificatesCarousel":
+                  return (
+                    <Image width={480} height={200} src={item} alt={item} />
+                  );
+                case "galleryCarousel":
+                  return (
+                    <Image
+                      width={200}
+                      height={200}
+                      src={item.image}
+                      alt={item.image}
+                    />
+                  );
+                default:
+                  return (
+                    <FeedBackCard
+                      clientImage={item.image}
+                      clientNameAndSurname={item.nameAndSurname}
+                      clientFeedback={item.feedback}
+                    />
+                  );
+              }
+            })()}
+          </div>
+        ))}
       </Slider>
     </div>
   );

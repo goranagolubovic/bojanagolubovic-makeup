@@ -1,6 +1,6 @@
 export const menuOptions = [
   {
-    link: "/",
+    link: "/home",
     title: "Početna",
   },
   {
@@ -31,6 +31,14 @@ export const menuOptions = [
     link: "/schedule",
     title: "Zakaži termin",
   },
+  {
+    link: "/content-settings",
+    title: "Upravljaj sadržajem",
+  },
+  {
+    link: "/login",
+    title: "Prijavi se",
+  },
 ];
 
 export const slots = [
@@ -48,7 +56,9 @@ export const slots = [
   "18:00",
 ];
 
-export const URL = "http://localhost:3001";
+export const URL = "http://localhost:3000";
+export const GOOGLE_MAPS_URL = "https://www.google.com/maps/place/";
+export const myLocation = "Duška Koščice 25, Banjaluka";
 export const pricesCardTitle = "CJENOVNIK";
 export const giftCardTitlePart = "poklon bon";
 export const feedbackTitle = "ŠTA KLIJENTI KAŽU O MENI:";

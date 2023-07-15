@@ -2,7 +2,15 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import camera from "../public/Camera.png";
 
-const ImageUpload = ({ text, onImageChange, formReset, error, name }) => {
+const ImageUpload = ({
+  text,
+  onImageChange,
+  formReset,
+  error,
+  name,
+  shape,
+}) => {
+  const rounded = shape !== "square" ? "rounded-full" : "rounded-[10px]";
   const [selectedImage, setSelectedImage] = useState();
   const [reset, setReset] = useState(false);
   const [showCamera, setShowCamera] = useState(true);
@@ -39,7 +47,7 @@ const ImageUpload = ({ text, onImageChange, formReset, error, name }) => {
   return (
     <div className="flex flex-col justify-center mb-4 sm:mb-8 lg:mb-16 gap-2 items-center">
       <div
-        className="image-upload flex flex-col  justify-center items-center h-16 w-16 sm:h-32 sm:w-32 lg:w-32 lg:h-32 bg-gray rounded-full bg-cover hover:opacity-40 transition-all duration-10` "
+        className={`image-upload flex flex-col  justify-center items-center h-16 w-16 sm:h-32 sm:w-32 lg:w-32 lg:h-32 bg-gray ${rounded} bg-cover hover:opacity-40 transition-all duration-10 `}
         onMouseOver={() => setShowCamera(true)}
         onMouseLeave={() => {
           if (selectedImage !== "") setShowCamera(false);

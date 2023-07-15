@@ -22,6 +22,7 @@ module.exports = {
         yellow: "#F6E5D8",
         beige: "#EDCFCD",
         gray: "#D9D9D9",
+        pink: "#EDCFCD",
       },
       fontFamily: {
         sans: ["var(--font-inter)"],

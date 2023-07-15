@@ -2,16 +2,17 @@
 import { React, useState, useEffect } from "react";
 import CustomCalendar from "@/components/calendar";
 import Instruction from "@/components/instruction";
-import TimeList from "../../features/time-list/time-list";
-import ReservationForm from "../../features/reservation-form/reservation-form";
+import TimeList from "../../../features/time-list/time-list";
+import ReservationForm from "../../../features/reservation-form/reservation-form";
 import { URL } from "@/constants/constants";
 import PopUp from "@/features/popup/popup";
-import number1 from "../../public/Number 1.png";
-import number2 from "../../public/Number 2.png";
-import number3 from "../../public/Number 3.png";
+import number1 from "../../../public/Number 1.png";
+import number2 from "../../../public/Number 2.png";
+import number3 from "../../../public/Number 3.png";
 import Error from "@/features/error/error";
 
-import "../../app/globals.css";
+import "../../../app/globals.css";
+
 const Schedule = () => {
   const todayDate = new Date().toLocaleDateString("fr-CA");
   const [selectedDate, setSelectedDate] = useState(todayDate);

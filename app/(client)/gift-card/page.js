@@ -1,6 +1,6 @@
 import React from "react";
-import GiftCardList from "../../features/gift-card-list/gift-card-list";
-import Error from "../../features/error/error";
+import GiftCardList from "../../../features/gift-card-list/gift-card-list";
+import Error from "../../../features/error/error";
 import { URL } from "@/constants/constants";
 import GiftCard from "@/components/gift-card";
 

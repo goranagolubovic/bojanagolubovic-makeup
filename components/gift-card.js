@@ -9,7 +9,8 @@ import instagram from "../public/Instagram.png";
 import email from "../public/Email.png";
 import Spinner from "./spinner";
 
-const GiftCard = ({ id, image, title, price }) => {
+const GiftCard = ({ id, image, title, price, serialNumber }) => {
+  const width = serialNumber ? "xl:w-[75%]" : "xl:w-[36%]";
   const [showSpinner, setShowSpinner] = useState(false);
   const [isFlipped, setIsFlipped] = useState(true);
   const [roundedDirection, setRounedDirection] = useState("");
@@ -18,6 +19,19 @@ const GiftCard = ({ id, image, title, price }) => {
     transform: isFlipped ? "rotateY(0)" : "rotateY(-180deg)",
     transition: "transform 1s",
   };
+  const onMouseEnter = () => {
+    if (!serialNumber) {
+      setIsFlipped(false);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (!serialNumber) {
+      setIsFlipped(true);
+    }
+  };
+
+  const markAsUsed = () => {};
 
   useEffect(() => {
     if (isFlipped) {
@@ -31,10 +45,10 @@ const GiftCard = ({ id, image, title, price }) => {
 
   return (
     <div
-      className={` w-[96%] lg:w-[65%] xl:w-[36%] sm:w-[65%] bg-white flex  text-brown ${roundedDirection} ${borderDirection} border-solid border-purple`}
+      className={` w-[96%] lg:w-[65%] ${width} sm:w-[65%] bg-white flex  text-brown ${roundedDirection} ${borderDirection} border-solid border-purple`}
       style={cardStyle}
-      onMouseEnter={() => setIsFlipped(false)}
-      onMouseLeave={() => setIsFlipped(true)}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {!isFlipped ? (
         <div className="w-full flex items-center justify-center ">
@@ -87,42 +101,52 @@ const GiftCard = ({ id, image, title, price }) => {
                 {giftCardTitlePart}
               </p>
             </div>
-            <p className="font-roboto font-extrabold text-1xl sm:text-2xl lg:text-3xl">
-              {price}
-            </p>
-            <div className="font-roboto flex gap-1 flex-col mt-4 ml-6">
-              <div className="flex gap-1">
-                <Image
-                  src={telephone}
-                  sizes="100vw"
-                  style={{ width: "7%", height: "7%" }}
-                  alt="telephone"
-                ></Image>
-                <p className="text-[10px] lg:text-[18px]">+38765184670</p>
+            {!serialNumber ? (
+              <p className="font-roboto font-extrabold text-1xl sm:text-2xl lg:text-3xl">
+                {price}
+              </p>
+            ) : (
+              <p className="font-roboto text-1xl">
+                Serijski broj: {serialNumber}
+              </p>
+            )}
+            {!serialNumber ? (
+              <div className="font-roboto flex gap-1 flex-col mt-4 ml-6">
+                <div className="flex gap-1">
+                  <Image
+                    src={telephone}
+                    sizes="100vw"
+                    style={{ width: "7%", height: "7%" }}
+                    alt="telephone"
+                  ></Image>
+                  <p className="text-[10px] lg:text-[18px]">+38765184670</p>
+                </div>
+                <div className="flex gap-1">
+                  <Image
+                    src={instagram}
+                    sizes="100vw"
+                    style={{ width: "7%", height: "7%" }}
+                    alt="instagram"
+                  ></Image>
+                  <p className="text-[10px] lg:text-[18px]">
+                    bojanagolubovic_makeup
+                  </p>
+                </div>
+                <div className="flex gap-1">
+                  <Image
+                    src={email}
+                    sizes="100vw"
+                    style={{ width: "7%", height: "7%" }}
+                    alt="email"
+                  ></Image>
+                  <p className="text-[10px] lg:text-[18px]">
+                    bojanagolubovic.makeup@gmail.com
+                  </p>
+                </div>
               </div>
-              <div className="flex gap-1">
-                <Image
-                  src={instagram}
-                  sizes="100vw"
-                  style={{ width: "7%", height: "7%" }}
-                  alt="instagram"
-                ></Image>
-                <p className="text-[10px] lg:text-[18px]">
-                  bojanagolubovic_makeup
-                </p>
-              </div>
-              <div className="flex gap-1">
-                <Image
-                  src={email}
-                  sizes="100vw"
-                  style={{ width: "7%", height: "7%" }}
-                  alt="email"
-                ></Image>
-                <p className="text-[10px] lg:text-[18px]">
-                  bojanagolubovic.makeup@gmail.com
-                </p>
-              </div>
-            </div>
+            ) : (
+              <Button onClick={markAsUsed} text="Označi kao iskorišteno" />
+            )}
           </div>
         </div>
       )}
