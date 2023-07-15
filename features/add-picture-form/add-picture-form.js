@@ -54,7 +54,7 @@ const AddPictureForm = () => {
   return (
     <>
       <form
-        className="bg-white rounded-[20px] flex flex-col justify-center m-8 px-32 py-16"
+        className="bg-white rounded-[20px] flex flex-col justify-center m-8 px-16 lg:px-32 py-8 lg:py-16"
         onSubmit={handleFormSubmit}
       >
         <ImageUpload

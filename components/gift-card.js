@@ -9,7 +9,14 @@ import instagram from "../public/Instagram.png";
 import email from "../public/Email.png";
 import Spinner from "./spinner";
 
-const GiftCard = ({ id, image, title, price, serialNumber }) => {
+const GiftCard = ({
+  id,
+  image,
+  title,
+  price,
+  serialNumber,
+  setStateListener,
+}) => {
   const width = serialNumber ? "xl:w-[75%]" : "xl:w-[36%]";
   const [showSpinner, setShowSpinner] = useState(false);
   const [isFlipped, setIsFlipped] = useState(true);
@@ -31,7 +38,21 @@ const GiftCard = ({ id, image, title, price, serialNumber }) => {
     }
   };
 
-  const markAsUsed = () => {};
+  const markAsUsed = async () => {
+    setShowSpinner(!showSpinner);
+    const data = {
+      serialNumber: serialNumber,
+    };
+    const response = await fetch(URL + "/api/gift-card", {
+      method: "PUT",
+      body: JSON.stringify(data),
+      cache: "no-store",
+    });
+    const responseData = await response.json();
+    if (response.status === 200) {
+      setStateListener();
+    }
+  };
 
   useEffect(() => {
     if (isFlipped) {
@@ -144,8 +165,12 @@ const GiftCard = ({ id, image, title, price, serialNumber }) => {
                   </p>
                 </div>
               </div>
-            ) : (
+            ) : !showSpinner ? (
               <Button onClick={markAsUsed} text="Označi kao iskorišteno" />
+            ) : (
+              <div className="w-full mb-4">
+                <Spinner tip="Akcija u toku" />
+              </div>
             )}
           </div>
         </div>

@@ -13,3 +13,8 @@ export const convertPriceToEuro = (price) => {
   const priceInEuro = parseFloat(formattedPrice) * exchangeRate;
   return priceInEuro;
 };
+
+export const filterGiftCards = (giftCards) => {
+  const filteredGiftCards = giftCards.filter((elem) => !elem.isUsed);
+  return filteredGiftCards;
+};

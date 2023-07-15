@@ -5,7 +5,12 @@ import { URL } from "@/constants/constants";
 import GiftCard from "@/components/gift-card";
 
 const getGiftCards = async () => {
-  const res = await fetch(URL + "/api/gift-cards");
+  const request = {
+    admin: "false",
+  };
+  const res = await fetch(URL + "/api/gift-card", {
+    params: JSON.stringify(request),
+  });
   const data = await res.json();
   return data;
 };

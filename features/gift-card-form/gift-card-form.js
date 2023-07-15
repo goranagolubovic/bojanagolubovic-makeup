@@ -20,7 +20,7 @@ const userSchema = object().shape({
   email: string().required(REQ_FIELD).max(30).email(EMAIL_FORMAT),
 });
 
-const GiftCardForm = ({ price, templateImage }) => {
+const GiftCardForm = ({ price, templateImage, image, title }) => {
   const initialOptions = {
     clientId: "test",
     currency: "EUR",
@@ -74,9 +74,18 @@ const GiftCardForm = ({ price, templateImage }) => {
         from: formData.dataFrom,
         to: formData.dataTo,
       };
-
+      const purchaseData = {
+        serialNumber: details.id,
+        image: image,
+        isUsed: false,
+        title: title,
+      };
       if (details.status === "COMPLETED") {
-        console.log("sending of email");
+        const purchaseOfGiftCardResponse = await fetch(URL + "/api/gift-card", {
+          method: "POST",
+          body: JSON.stringify(purchaseData),
+        });
+
         const emailResponse = await fetch(URL + "/api/send-email/gift-card", {
           method: "POST",
           body: JSON.stringify(emailData),

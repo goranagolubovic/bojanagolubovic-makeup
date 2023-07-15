@@ -32,7 +32,7 @@ export const menuOptions = [
     title: "Zakaži termin",
   },
   {
-    link: "/content-settings",
+    link: "/admin-content-settings",
     title: "Upravljaj sadržajem",
   },
   {

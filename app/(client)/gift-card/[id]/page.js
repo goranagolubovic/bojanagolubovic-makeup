@@ -15,7 +15,7 @@ import ReservationForm from "@/features/reservation-form/reservation-form";
 //   }));
 // };
 const getGiftCard = async (id) => {
-  const res = await fetch(URL + `/api/gift-cards/${id}`, {
+  const res = await fetch(URL + `/api/gift-card/${id}`, {
     cache: "no-cache",
   });
   const data = await res.json();
@@ -46,7 +46,12 @@ const GiftCardPurchase = async () => {
         <p className="font-pinyonscript text-3xl lg:text-4xl text-brown">
           poklon bon
         </p>
-        <GiftCardForm price={price} templateImage={templateImage} />
+        <GiftCardForm
+          price={price}
+          templateImage={templateImage}
+          image={image}
+          title={title}
+        />
       </div>
     </div>
   );

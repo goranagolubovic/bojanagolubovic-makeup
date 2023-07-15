@@ -1,7 +1,7 @@
 import React from "react";
 import GiftCard from "@/components/gift-card";
 
-const GiftCardSettings = ({ giftCardsList, title }) => {
+const GiftCardSettings = ({ giftCardsList, title, setStateListener }) => {
   return (
     <div className="w-full h-[840px] bg-yellow  rounded-[20px] my-4  mx-3 sm:mx-3 md:mx-3 lg:mx-3 flex-col flex pt-6 pb-6 gap-4 justify-center items-center shadow-custom">
       <p className="font-greatvibes text-3xl  sm:text-3xl md:text-4xl lg:text-6xl text-purple ">
@@ -15,6 +15,7 @@ const GiftCardSettings = ({ giftCardsList, title }) => {
               image={elem.image}
               title={elem.title}
               serialNumber={elem.serialNumber}
+              setStateListener={setStateListener}
             />
           );
         })}
