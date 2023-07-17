@@ -70,3 +70,5 @@ export const reservationInProgress =
   "Rezervacija termina u toku. Molimo sačekajte...";
 export const settingFeedbackInProgress =
   "Dodavanje komentara u toku. Molimo sačekajte...";
+export const addingPictureInProgress =
+  "Dodavanje slike u toku. Molimo sačekajte...";

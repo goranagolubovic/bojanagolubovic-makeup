@@ -13,3 +13,5 @@ export const PURCHASE_SUCCESS =
 export const FROM = "Od";
 export const TO = "Za";
 export const POST_SUCCESS = "Vaše mišljenje je zabilježeno. Hvala Vam!";
+export const IMAGE_SUCCESS = "Slika je uspješno sačuvana u galeriju.";
+export const DELETE_SUCCESS = "Uspješno obrisano.";

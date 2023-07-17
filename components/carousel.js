@@ -1,10 +1,13 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import FeedBackCard from "./feedback-card";
+import Button from "./button";
+import { URL } from "@/constants/constants";
+import Spinner from "./spinner";
 
 const certificatesSettings = {
   dots: true,
@@ -28,7 +31,7 @@ const generallySettings = {
   infinite: true,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: true,
+  autoplay: false,
   speed: 500,
   autoplaySpeed: 4000,
   pauseOnHover: true,
@@ -42,9 +45,35 @@ const generallySettings = {
   ],
 };
 
-const Carousel = ({ items, type, sliderStyle, containerStyle }) => {
+const Carousel = ({
+  items,
+  type,
+  sliderStyle,
+  containerStyle,
+  setStateListener,
+}) => {
   const settings =
     type === "certificatesCarousel" ? certificatesSettings : generallySettings;
+  const [actionInProgress, setActionInProgress] = useState(false);
+
+  const deletePicture = async (id) => {
+    let response;
+    let responseData;
+
+    setActionInProgress(true);
+
+    response = await fetch(URL + "/api/pictures?id=" + id, {
+      method: "DELETE",
+    });
+    responseData = await response.json();
+    if (responseData.status === 200) {
+      // response = await fetch(URL + "/api/pictures", { cache: "no-store" });
+      // responseData = await response.json();
+      // setItemsData(responseData.pictures);
+      setActionInProgress(false);
+      setStateListener();
+    }
+  };
 
   return (
     <div className={containerStyle}>
@@ -59,12 +88,29 @@ const Carousel = ({ items, type, sliderStyle, containerStyle }) => {
                   );
                 case "galleryCarousel":
                   return (
-                    <Image
-                      width={200}
-                      height={200}
-                      src={item.image}
-                      alt={item.image}
-                    />
+                    <div className="w-full  flex flex-col gap-2 items-center py-4">
+                      {actionInProgress ? (
+                        <div className="h-[200px] w-full">
+                          <Spinner tip="Brisanje slike u toku..." />
+                        </div>
+                      ) : (
+                        <>
+                          <div className="w-[200px] relative h-[200px] ">
+                            <Image
+                              src={item.image}
+                              alt={item._id}
+                              fill
+                              className="w-50% h-50% object-fit"
+                            />
+                          </div>
+
+                          <Button
+                            text="Obriši"
+                            onClick={() => deletePicture(item._id)}
+                          />
+                        </>
+                      )}
+                    </div>
                   );
                 default:
                   return (
