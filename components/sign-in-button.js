@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Button from "../components/button";
+import { useSession, getSession, signIn, signOut } from "next-auth/react";
+import Button from "./button";
 
-const SignInButton = ({ setSession }) => {
+const SignInButton = ({ setSession, icon }) => {
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -10,6 +10,13 @@ const SignInButton = ({ setSession }) => {
       setSession(session);
     }
   }, [session, setSession]);
+
+  const handleSignIn = async () => {
+    const session = await signIn("google");
+    if (session && session.user) {
+      setSession(session);
+    }
+  };
 
   return (
     <>
@@ -20,15 +27,10 @@ const SignInButton = ({ setSession }) => {
             signOut();
           }}
           text="Odjavi se"
+          icon={icon}
         />
       ) : (
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            signIn();
-          }}
-          text="Prijavi se"
-        />
+        <Button onClick={handleSignIn} text="Prijavi se" icon={icon} />
       )}
     </>
   );

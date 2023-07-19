@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-const Button = ({ text, href, onClick }) => {
+const Button = ({ text, href, onClick, icon }) => {
   console.log(href);
   return (
     <div>
@@ -14,6 +15,23 @@ const Button = ({ text, href, onClick }) => {
           >
             {text}
           </Link>
+        </button>
+      ) : icon ? (
+        <button
+          className=" flex bg-[#fef0f1] items-center gap-4 px-8 py-2 border border-gray-300 rounded-[20px] font-bold text-brown text-xs sm:text-lg lg:text-xl hover:bg-[#fef0f1]  transition-all duration-300 ease-in-out transform hover:scale-105"
+          onClick={onClick}
+        >
+          <Image
+            width={30}
+            height={30}
+            src={icon}
+            alt="google"
+            // sizes="10vw"
+            // style={{ width: "7%", height: "7%" }}
+            // alt="google"
+            // src={googleIcon}
+          />
+          <span>{text}</span>
         </button>
       ) : onClick ? (
         <button

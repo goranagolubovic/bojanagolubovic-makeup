@@ -12,12 +12,11 @@ import Button from "@/components/button";
 import { URL, reservationInProgress } from "@/constants/constants";
 import { formatDate } from "@/helpers";
 import Spinner from "@/components/spinner";
+import { signInWithGoogle } from "@/constants/constants";
+import SignInButton from "@/components/sign-in-button";
 
 const userSchema = object().shape({
-  ime: string().required(REQ_FIELD),
-  prezime: string().required(REQ_FIELD),
   brojTelefona: string().matches(/^\d+$/, TEL_FORMAT).required(REQ_FIELD),
-  email: string().required(REQ_FIELD).max(30).email(EMAIL_FORMAT),
 });
 
 const ReservationForm = ({
@@ -27,14 +26,12 @@ const ReservationForm = ({
   setMessage,
   setReservationStatus,
 }) => {
+  const [session, setSession] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [fieldErrors, setFieldErrors] = useState({});
   const [formReset, setFormReset] = useState(false);
   const [formData, setFormData] = useState({
-    ime: "",
-    prezime: "",
     brojTelefona: "",
-    email: "",
   });
 
   const handleInputChange = (e) => {
@@ -45,10 +42,7 @@ const ReservationForm = ({
   const resetForm = () => {
     setFormReset(!formReset);
     setFormData({
-      ime: "",
-      prezime: "",
       brojTelefona: "",
-      email: "",
     });
     setTime("");
   };
@@ -60,9 +54,8 @@ const ReservationForm = ({
       isReserved: true,
       [selectedDate]: time,
       brojTelefona: formData.brojTelefona,
-      ime: formData.ime,
-      prezime: formData.prezime,
-      email: formData.email,
+      ime_i_prezime: session.user.name,
+      email: session.user.email,
     };
 
     try {
@@ -88,7 +81,7 @@ const ReservationForm = ({
         const emailData = {
           datum: formattedDate,
           vrijeme: time,
-          email: formData.email,
+          email: session.user.email,
         };
         const emailResponse = await fetch(URL + "/api/send-email/reservation", {
           method: "POST",
@@ -115,51 +108,60 @@ const ReservationForm = ({
   };
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      className="bg-white px-8 sm:px-0 lg:px-0 w-5/6 md:w-2/3  lg:w-1/2 xl:w-1/3 h-[400px] lg:h-[500px] sm:h-[500px]  py-16 flex justify-center flex-col items-center rounded-[20px]"
-    >
-      {isSubmitted ? (
-        <Spinner tip={reservationInProgress} />
-      ) : (
-        <>
-          <FormElement
-            label="*Ime"
-            name="ime"
-            color="bg-gray"
-            onChange={handleInputChange}
-            formReset={formReset}
-            error={fieldErrors.ime}
-          />
-          <FormElement
-            label="*Prezime"
-            color="bg-gray"
-            name="prezime"
-            onChange={handleInputChange}
-            formReset={formReset}
-            error={fieldErrors.prezime}
-          />
-          <FormElement
-            label="*Telefon"
-            name="brojTelefona"
-            color="bg-gray"
-            onChange={handleInputChange}
-            formReset={formReset}
-            error={fieldErrors.brojTelefona}
-          />
-          <FormElement
-            label="*Email"
-            name="email"
-            color="bg-gray"
-            onChange={handleInputChange}
-            formReset={formReset}
-            error={fieldErrors.email}
-          />
-
-          <Button href="" text="Zakaži termin" />
-        </>
+    <div className="w-3/4 sm:w-3/4 lg:w-1/3  bg-white rounded-[20px] py-2 sm:py-4 lg:py-8 flex flex-col justify-center items-center">
+      <p className="text-center text-brown text-2xl sm:text-2xl lg:text-3xl font-bold pt-5 pb-10 sm:pb-10 lg:pb-16">
+        ZAKAŽI TERMIN
+      </p>
+      {session === "" && (
+        <p className="text-brown text-1xl lg:text-2xl mb-10 px-16">
+          {signInWithGoogle}
+        </p>
       )}
-    </form>
+      {session !== "" && (
+        <form
+          onSubmit={handleFormSubmit}
+          className="w-full flex flex-col  items-center py-4 sm:py-4 py-8"
+        >
+          {isSubmitted ? (
+            <Spinner tip={reservationInProgress} />
+          ) : (
+            <>
+              <FormElement
+                label="*Ime i prezime"
+                name="name"
+                color="bg-gray"
+                onChange={handleInputChange}
+                formReset={formReset}
+                error={fieldErrors.email}
+                defaultValue={session.user.name}
+              />
+              <FormElement
+                label="*Email"
+                name="name"
+                color="bg-gray"
+                onChange={handleInputChange}
+                formReset={formReset}
+                error={fieldErrors.email}
+                defaultValue={session.user.email}
+              />
+              <FormElement
+                label="*Telefon"
+                name="brojTelefona"
+                color="bg-gray"
+                onChange={handleInputChange}
+                formReset={formReset}
+                error={fieldErrors.brojTelefona}
+              />
+
+              <Button href="" text="Zakaži termin" />
+            </>
+          )}
+        </form>
+      )}
+      {session === "" && (
+        <SignInButton icon="/google.png" setSession={setSession} />
+      )}
+    </div>
   );
 };
 

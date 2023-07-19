@@ -22,22 +22,29 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const doc = await request.json();
-  let db;
-  let object;
-  try {
-    const db = await getDb();
-    const result = await db.collection("feedbacks").insertOne(doc);
+  const session = await getServerSession(request, authOptions);
+  if (session) {
+    const doc = await request.json();
+    let db;
+    let object;
+    try {
+      const db = await getDb();
+      const result = await db.collection("feedbacks").insertOne(doc);
+      object = {
+        message: { POST_SUCCESS },
+        status: 200,
+      };
+    } catch (error) {
+      object = {
+        message: { DB_CONNECTION_ERROR },
+        status: 500,
+      };
+    }
+  } else {
     object = {
-      message: { POST_SUCCESS },
-      status: 200,
-    };
-  } catch (error) {
-    object = {
-      message: { DB_CONNECTION_ERROR },
+      message: { NOT_SIGNED_IN },
       status: 500,
     };
   }
-
   return NextResponse.json(object);
 }

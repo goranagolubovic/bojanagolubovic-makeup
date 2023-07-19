@@ -35,10 +35,6 @@ export const menuOptions = [
     link: "/admin-content-settings",
     title: "Upravljaj sadržajem",
   },
-  {
-    link: "/login",
-    title: "Prijavi se",
-  },
 ];
 
 export const slots = [

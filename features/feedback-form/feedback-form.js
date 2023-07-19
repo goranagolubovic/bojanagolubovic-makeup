@@ -72,9 +72,14 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="w-3/4 sm:w-3/4 lg:w-1/3 h-[500px] sm:h-[700px] lg:h-[700px] bg-white rounded-[20px] px-8 sm:px-12 lg:px-16  py-2 sm:py-4 lg:py-8 flex flex-col justify-center items-center">
+    <div className="w-3/4 sm:w-3/4 lg:w-1/3  bg-white rounded-[20px] px-8 sm:px-12 lg:px-16  py-2 sm:py-4 lg:py-8 flex flex-col justify-center items-center">
+      <p className="text-center text-brown text-2xl sm:text-2xl lg:text-3xl font-bold pt-5 pb-10 sm:pb-10 lg:pb-16">
+        OSTAVI KOMENTAR
+      </p>
       {session === "" && (
-        <p className="text-brown text-1xl mb-8">{signInWithGoogle}</p>
+        <p className="text-brown text-1xl lg:text-2xl mb-10">
+          {signInWithGoogle}
+        </p>
       )}
 
       {session !== "" && (
@@ -114,7 +119,9 @@ const FeedbackForm = () => {
           )}
         </form>
       )}
-      {session === "" && <SignInButton setSession={setSession} />}
+      {session === "" && (
+        <SignInButton icon="/google.png" setSession={setSession} />
+      )}
       {message !== "" && (
         <PopUp type={popupType} message={message} togglePopup={togglePopup} />
       )}

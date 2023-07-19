@@ -1,11 +1,19 @@
 "use client";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useSession, getSession } from "next-auth/react";
 
 const Menu = (props) => {
   const [navbar, setNavbar] = useState(false);
+  const { data: session } = useSession();
+
   const pathname = usePathname();
+
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
+
   return (
     <nav className="w-full flex justify-end font-roboto lg:text-2xl sm:text-1xl ">
       <div className="w-full justify-center px-4 mx-auto lg:max-w-8xl md:items-center md:flex md:px-8">
@@ -56,20 +64,41 @@ const Menu = (props) => {
             }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-12 md:space-y-0">
-              {props.menuOptions.map((elem) => {
-                const isActive =
-                  elem.link === pathname ||
-                  pathname === elem.link ||
-                  pathname.startsWith(elem.link + "/");
-                return (
-                  <li
-                    className={`text-white ${isActive ? "text-yellow" : ""}`}
-                    key={elem.title}
-                  >
-                    <Link href={elem.link}>{elem.title}</Link>
-                  </li>
-                );
-              })}
+              <ul className="items-center justify-center space-y-8 md:flex md:space-x-12 md:space-y-0">
+                {props.menuOptions.map((elem) => {
+                  const isActive =
+                    elem.link === pathname ||
+                    pathname === elem.link ||
+                    pathname.startsWith(elem.link + "/");
+
+                  if (elem.link === "/admin-content-settings") {
+                    if (
+                      session &&
+                      session.user.email === "bojanagolubovic.makeup@gmail.com"
+                    )
+                      return (
+                        <li
+                          className={`text-white ${
+                            isActive ? "text-yellow" : ""
+                          }`}
+                          key={elem.title}
+                        >
+                          <Link href={elem.link}>{elem.title}</Link>
+                        </li>
+                      );
+                  } else
+                    return (
+                      <li
+                        className={`text-white ${
+                          isActive ? "text-yellow" : ""
+                        }`}
+                        key={elem.title}
+                      >
+                        <Link href={elem.link}>{elem.title}</Link>
+                      </li>
+                    );
+                })}
+              </ul>
             </ul>
           </div>
         </div>

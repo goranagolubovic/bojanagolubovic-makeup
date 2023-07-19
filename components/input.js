@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-const Input = ({ color, onChange, name, formReset, placeholder }) => {
+const Input = ({
+  color,
+  onChange,
+  name,
+  formReset,
+  placeholder,
+  defaultValue,
+}) => {
   const [value, setValue] = useState("");
   const [reset, setReset] = useState(false);
   const height = name === "komentar" ? "h-40" : "";
@@ -33,11 +40,12 @@ const Input = ({ color, onChange, name, formReset, placeholder }) => {
         />
       ) : (
         <input
+          defaultValue={defaultValue}
           name={name}
-          value={value}
+          value={defaultValue ? defaultValue : value}
           onChange={handleInputChange}
           placeholder={placeholder}
-          className={`${color} focus:border-transparent focus:outline-none px-8 `}
+          className={`${color} focus:border-transparent focus:outline-none px-4`}
         />
       )}
     </div>
