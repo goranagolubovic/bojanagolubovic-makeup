@@ -3,7 +3,7 @@ import React from "react";
 const PersonalInfos = () => {
   return (
     <div className=" rounded rounded-[10px]  flex-col gap-10 bg-white px-4 sm:px-4 lg:px-10 my-10 sm:my-4 lg:my-20 w-full  text-center">
-      <p className="font-qwigley text-purple text-4xl sm:text-6xl lg:text-8xl pb-10 sm:pb-10 lg:pb-20 pt-10">
+      <p className="font-qwigley text-purple text-4xl sm:text-6xl lg:text-8xl pb-10 sm:pb-10 lg:pb-12 pt-10">
         O meni
       </p>
       <p className="text-purple text-0.5xl sm:text-1xl lg:text-3xl ">

@@ -19,7 +19,7 @@ const AboutMe = async () => {
   return (
     <div className="mx-10 sm:mx-5 lg:mx-20">
       <div className="flex  flex-col  sm:flex-col lg:flex-row justify-center items-center  gap-4">
-        <div className=" flex justify-center  py-5 sm:py-5 lg:py-20  w-1/2  items-center ">
+        <div className="py-5 sm:py-5 lg:py-20  w-1/2   ">
           <Image
             src={myPic}
             alt="bojanagolubovic"

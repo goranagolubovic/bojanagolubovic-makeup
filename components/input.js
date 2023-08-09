@@ -45,7 +45,7 @@ const Input = ({
           value={defaultValue ? defaultValue : value}
           onChange={handleInputChange}
           placeholder={placeholder}
-          className={`${color} focus:border-transparent focus:outline-none px-4`}
+          className={`${color} focus:border-transparent focus:outline-none pl-3 w-full`}
         />
       )}
     </div>

@@ -14,8 +14,8 @@ const ContentSettings = () => {
   return (
     <div className="w-full flex justify-center items-center">
       {session && session.user.email === "bojanagolubovic.makeup@gmail.com" ? (
-        <div className="flex flex-col">
-          <div className="flex flex-col sm:flex-col md:flex-row lg:flex-row gap-4">
+        <div className="w-full flex flex-col">
+          <div className="w-full flex flex-col sm:flex-col md:flex-row lg:flex-row gap-4">
             <div className="w-[90%] sm:w-[90%] md:[w-50%] lg:w-[50%] h-[50%]">
               <GiftCardSettings
                 title="Kupljeni poklon bonovi"

@@ -72,7 +72,7 @@ const FeedbackForm = () => {
   };
 
   return (
-    <div className="w-3/4 sm:w-3/4 lg:w-1/3  bg-white rounded-[20px] px-8 sm:px-12 lg:px-16  py-2 sm:py-4 lg:py-8 flex flex-col justify-center items-center">
+    <div className="w-3/4 sm:w-3/4 lg:w-1/3  bg-white rounded-[20px] px-8 sm:px-12 lg:px-16  py-2 sm:py-4 lg:py-4 flex flex-col justify-center items-center">
       <p className="text-center text-brown text-2xl sm:text-2xl lg:text-3xl font-bold pt-5 pb-10 sm:pb-10 lg:pb-16">
         OSTAVI KOMENTAR
       </p>
@@ -84,7 +84,7 @@ const FeedbackForm = () => {
 
       {session !== "" && (
         <form
-          className="w-full h-[500px] sm:h-[700px] lg:h-[700px] flex flex-col  items-center py-4 sm:py-4 py-8"
+          className="w-full h-[500px] sm:h-[500px] lg:h-[600px] flex flex-col  items-center sm:py-4 py-4"
           onSubmit={handleFormSubmit}
         >
           {isSubmitted ? (

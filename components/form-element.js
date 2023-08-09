@@ -18,7 +18,7 @@ const FormElement = ({
       } items-center text-brown font-roboto text-xs sm:text-lg lg:text-xl mb-8 sm:mb-8 mb-12`}
     >
       {label && <p className="font-bold w-1/3 ">{label}</p>}
-      <div className={`flex flex-col  w-2/3  `}>
+      <div className={`flex flex-col  w-2/3 `}>
         <Input
           color={color}
           onChange={onChange}

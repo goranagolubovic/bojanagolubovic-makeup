@@ -10,6 +10,7 @@ const getGiftCards = async () => {
   };
   const res = await fetch(URL + "/api/gift-card", {
     params: JSON.stringify(request),
+    cache: "no-store",
   });
   const data = await res.json();
   return data;
