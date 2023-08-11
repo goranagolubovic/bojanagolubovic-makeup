@@ -71,7 +71,7 @@ const Menu = (props) => {
                     pathname === elem.link ||
                     pathname.startsWith(elem.link + "/");
 
-                  if (elem.link === "/admin-content-settings") {
+                  if (elem.link === "/admin-settings") {
                     if (
                       session &&
                       session.user.email === "bojanagolubovic.makeup@gmail.com"

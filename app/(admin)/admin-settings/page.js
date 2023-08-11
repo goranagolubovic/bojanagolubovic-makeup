@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Error from "@/features/error/error";
 
-const ContentSettings = () => {
+const AdminSettings = () => {
   const [galleryReady, setGalleryReady] = useState(false);
   const [giftCardsReady, setGiftCardsReady] = useState(false);
   const { data: session } = useSession();
@@ -42,4 +42,4 @@ const ContentSettings = () => {
   );
 };
 
-export default ContentSettings;
+export default AdminSettings;

@@ -4,10 +4,11 @@ import FormElement from "../../components/form-element";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { convertPriceToEuro } from "@/helpers";
-import { URL } from "@/constants/constants";
 import PopUp from "../popup/popup";
 import Button from "@/components/button";
 import { useRouter } from "next/navigation";
+import SignInButton from "@/components/sign-in-button";
+import { URL, signInWithGoogle } from "@/constants/constants";
 import { object, string } from "yup";
 import {
   EMAIL_FORMAT,
@@ -15,9 +16,7 @@ import {
 } from "../../constants/messages/error-messages";
 
 const userSchema = object().shape({
-  dataFrom: string().required(REQ_FIELD),
   dataTo: string().required(REQ_FIELD),
-  email: string().required(REQ_FIELD).max(30).email(EMAIL_FORMAT),
 });
 
 const GiftCardForm = ({ price, templateImage, image, title }) => {
@@ -28,6 +27,7 @@ const GiftCardForm = ({ price, templateImage, image, title }) => {
 
   const router = useRouter();
   const [message, setMessage] = useState("");
+  const [session, setSession] = useState("");
   const priceInEuro = convertPriceToEuro(price);
   const [showPayPallButtons, setShowPayPallButtons] = useState();
   const [fieldErrors, setFieldErrors] = useState({});
@@ -70,8 +70,8 @@ const GiftCardForm = ({ price, templateImage, image, title }) => {
       const emailData = {
         templateImage: templateImage,
         serialNumber: details.id,
-        email: formData.email,
-        from: formData.dataFrom,
+        email: session.user.email,
+        from: session.user.name,
         to: formData.dataTo,
       };
       const purchaseData = {
@@ -119,61 +119,73 @@ const GiftCardForm = ({ price, templateImage, image, title }) => {
   };
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      className="w-full my-8 lg:my-16 flex justify-center flex-col items-center"
-    >
-      <FormElement
-        label="*Vaše ime i prezime"
-        color="bg-white"
-        onChange={handleInputChange}
-        name="dataFrom"
-        error={fieldErrors.dataFrom}
-        formReset={formReset}
-      />
-      <FormElement
-        label="*Ime i prezime osobe kojoj poklanjate bon"
-        color="bg-white"
-        name="dataTo"
-        onChange={handleInputChange}
-        error={fieldErrors.dataTo}
-        formReset={formReset}
-      />
-      <FormElement
-        label="*Vaša email adresa"
-        color="bg-white"
-        name="email"
-        onChange={handleInputChange}
-        error={fieldErrors.email}
-        formReset={formReset}
-      />
+    <>
+      {session === "" && (
+        <>
+          <p className="text-brown text-1xl lg:text-2xl mb-20 mt-44 px-20">
+            {signInWithGoogle}
+          </p>
+          <SignInButton icon="/google.png" setSession={setSession} />
+        </>
+      )}
+      {session !== "" && (
+        <form
+          onSubmit={handleFormSubmit}
+          className="w-full my-8 lg:my-16 flex justify-center flex-col items-center"
+        >
+          <FormElement
+            label="*Vaše ime i prezime"
+            color="bg-white"
+            onChange={handleInputChange}
+            name="dataFrom"
+            formReset={formReset}
+            defaultValue={session.user.name}
+          />
+          <FormElement
+            label="*Ime i prezime osobe kojoj poklanjate bon"
+            color="bg-white"
+            name="dataTo"
+            onChange={handleInputChange}
+            error={fieldErrors.dataTo}
+            formReset={formReset}
+          />
+          <FormElement
+            label="*Vaša email adresa"
+            color="bg-white"
+            name="email"
+            onChange={handleInputChange}
+            formReset={formReset}
+            defaultValue={session.user.email}
+          />
 
-      {showPayPallButtons && message === "" ? (
-        <div className="my-8">
-          <PayPalScriptProvider options={initialOptions}>
-            <PayPalButtons
-              createOrder={createOrder}
-              onApprove={onApprove}
-            ></PayPalButtons>
-          </PayPalScriptProvider>
-        </div>
-      ) : (
-        <div className="my-8 flex flex-col items-center lg:flex-row gap-4">
-          <Button href="" text="Pređi na plaćanje" />
-          <Button onClick={cancel} text="Odustani" />
-        </div>
+          {showPayPallButtons && message === "" ? (
+            <div className="my-8">
+              <PayPalScriptProvider options={initialOptions}>
+                <PayPalButtons
+                  createOrder={createOrder}
+                  onApprove={onApprove}
+                ></PayPalButtons>
+              </PayPalScriptProvider>
+            </div>
+          ) : (
+            <div className="my-8 flex flex-col items-center lg:flex-row gap-4">
+              <Button href="" text="Pređi na plaćanje" />
+              <Button onClick={cancel} text="Odustani" />
+            </div>
+          )}
+          {message !== "" && (
+            <PopUp
+              message={message}
+              togglePopup={() => {
+                setMessage("");
+                setShowPayPallButtons(false);
+              }}
+              type={"success"}
+            />
+          )}
+        </form>
       )}
-      {message !== "" && (
-        <PopUp
-          message={message}
-          togglePopup={() => {
-            setMessage("");
-            setShowPayPallButtons(false);
-          }}
-          type={"success"}
-        />
-      )}
-    </form>
+    </>
   );
 };
 

@@ -9,6 +9,7 @@ const ScheduleSettingsElement = ({ elem, setCanceledMessage }) => {
   );
   const time = elem[date];
   const name = elem.ime_i_prezime;
+  const telephone = elem.brojTelefona;
 
   const cancelReservation = async () => {
     const response = await fetch(URL + "/api/reservations", {
@@ -29,6 +30,7 @@ const ScheduleSettingsElement = ({ elem, setCanceledMessage }) => {
         {date} {time}
       </p>
       <p className="text-brown font-roboto font-bold">{name}</p>
+      <p className="text-brown font-roboto font-bold">Telefon: {telephone}</p>
 
       <div className="mt-2">
         <Button text="Otkaži" onClick={cancelReservation} />

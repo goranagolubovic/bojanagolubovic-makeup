@@ -32,7 +32,7 @@ export const menuOptions = [
     title: "Zakaži termin",
   },
   {
-    link: "/admin-content-settings",
+    link: "/admin-settings",
     title: "Upravljaj sadržajem",
   },
 ];
@@ -61,7 +61,7 @@ export const feedbackTitle = "ŠTA KLIJENTI KAŽU O MENI:";
 export const leaveAFeedback =
   "*Vaše mišljenje mi je od izuzetne važnosti. Značilo bi mi kada biste odvojili par sekundi Vašeg vremena i ostavili svoj 'feedback'.";
 export const signInWithGoogle =
-  " NAPOMENA: Ova akcija je dozvoljena samo prijavljenim korisnicima. Da biste ostavili komentar, prijavite se putem svoga Google računa.";
+  " NAPOMENA: Ova akcija je dozvoljena samo prijavljenim korisnicima. Da biste nastavili dalje, prijavite se putem svoga Google računa.";
 export const reservationInProgress =
   "Rezervacija termina u toku. Molimo sačekajte...";
 export const settingFeedbackInProgress =
