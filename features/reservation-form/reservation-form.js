@@ -2,7 +2,6 @@
 import { React, useState } from "react";
 import { object, string } from "yup";
 import {
-  EMAIL_FORMAT,
   REQ_FIELD,
   TEL_FORMAT,
   TIME_REQ,

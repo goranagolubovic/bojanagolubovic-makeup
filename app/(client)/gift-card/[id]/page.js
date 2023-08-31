@@ -1,17 +1,7 @@
 import { React } from "react";
 import { URL } from "@/constants/constants";
 import GiftCardForm from "../../../../features/gift-card-form/gift-card-form";
-import ReservationForm from "@/features/reservation-form/reservation-form";
 
-// const generateStaticParams = async () => {
-//   const giftCards = await fetch("http://localhost:3001/gift-cards").then(
-//     (res) => res.json()
-//   );
-
-//   return giftCards.map((giftCard) => ({
-//     id: giftCard._id,
-//   }));
-// };
 const getGiftCard = async (id) => {
   const res = await fetch(URL + `/api/gift-card/${id}`, {
     cache: "no-cache",

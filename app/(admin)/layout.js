@@ -50,12 +50,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <head>
-        <script
-          src="https://www.paypal.com/sdk/js?client-id=Ada1fQuR8rR-lnXitXFu3Q9lON08_ubogBgiUb7VLeQn_gLugDTOOb9f8ChtpOh0bTqqwGaobv2-rr3i&locale=en_US&currency=EUR"
-          type="text/javascript"
-        ></script>
-      </head> */}
       <body
         className={`bg-white ${inter.variable} ${roboto.variable} ${qwigley.variable} ${greatvibes.variable} ${pinyonscript.variable}`}
       >

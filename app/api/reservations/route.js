@@ -58,7 +58,6 @@ export async function PUT(request) {
       return elem._id.equals(doc._id);
     });
 
-    //filteredData[0].isReserved = false;
     const result = await db
       .collection("reservations")
       .deleteOne(

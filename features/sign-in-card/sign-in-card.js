@@ -1,6 +1,5 @@
 "use client";
 import SignInButton from "@/components/sign-in-button";
-import { signIn } from "next-auth/react";
 import { React, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 

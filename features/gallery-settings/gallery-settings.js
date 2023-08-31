@@ -10,9 +10,6 @@ const GallerySettings = ({ title, setGalleryReady, galleryReady }) => {
   const [stateListener, setStateListener] = useState(false);
 
   const getPictures = async () => {
-    const data = {
-      admin: true,
-    };
     const response = await fetch(URL + "/api/pictures", {
       cache: "no-store",
     });

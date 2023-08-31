@@ -71,9 +71,6 @@ const Carousel = ({
     });
     responseData = await response.json();
     if (responseData.status === 200) {
-      // response = await fetch(URL + "/api/pictures", { cache: "no-store" });
-      // responseData = await response.json();
-      // setItemsData(responseData.pictures);
       setActionInProgress(false);
       setStateListener();
     }

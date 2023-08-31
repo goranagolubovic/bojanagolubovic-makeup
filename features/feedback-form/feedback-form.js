@@ -10,7 +10,6 @@ import { object, string } from "yup";
 import { REQ_FIELD } from "../../constants/messages/error-messages";
 import Spinner from "@/components/spinner";
 import { settingFeedbackInProgress } from "@/constants/constants";
-import { signIn, signOut, useSession } from "next-auth/react";
 
 const userSchema = object().shape({
   slika: string().required(REQ_FIELD),
