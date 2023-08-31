@@ -8,6 +8,7 @@ const ScheduleSettings = ({ title }) => {
   const [reservations, setReservations] = useState([]);
   const [reservationsTomorrow, setReservationsTomorrow] = useState([]);
   const [reservationsToday, setReservationsToday] = useState([]);
+  const [reservationCanceled, setReservationCanceled] = useState(false);
 
   const getReservations = async () => {
     const response = await fetch(URL + "/api/reservations", {
@@ -26,7 +27,7 @@ const ScheduleSettings = ({ title }) => {
 
   useEffect(() => {
     getReservations();
-  }, []);
+  }, [reservationCanceled]);
 
   return (
     <div className="w-[90%] lg:w-[99%] bg-pink max-h-120  rounded-[20px] my-4  mx-3 sm:mx-3 md:mx-3 lg:mx-3 flex-col flex pt-6 pb-6 gap-8 items-center shadow-custom">
@@ -34,9 +35,24 @@ const ScheduleSettings = ({ title }) => {
         {title}
       </p>
       <div className="flex flex-col lg:flex-row gap-16 lg:gap-32  items-center ">
-        <ScheduleSettingsContainer items={reservationsToday} title="Danas" />
-        <ScheduleSettingsContainer items={reservationsTomorrow} title="Sutra" />
-        <ScheduleSettingsContainer items={reservations} title="Svi" />
+        <ScheduleSettingsContainer
+          items={reservationsToday}
+          title="Danas"
+          reservationCanceled={reservationCanceled}
+          setReservationCanceled={setReservationCanceled}
+        />
+        <ScheduleSettingsContainer
+          items={reservationsTomorrow}
+          title="Sutra"
+          reservationCanceled={reservationCanceled}
+          setReservationCanceled={setReservationCanceled}
+        />
+        <ScheduleSettingsContainer
+          items={reservations}
+          title="Svi"
+          reservationCanceled={reservationCanceled}
+          setReservationCanceled={setReservationCanceled}
+        />
       </div>
     </div>
   );

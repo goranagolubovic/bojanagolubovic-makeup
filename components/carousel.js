@@ -56,6 +56,10 @@ const Carousel = ({
     type === "certificatesCarousel" ? certificatesSettings : generallySettings;
   const [actionInProgress, setActionInProgress] = useState(false);
 
+  if (type === "feedbackCarousel") {
+    items.reverse();
+  }
+
   const deletePicture = async (id) => {
     let response;
     let responseData;
@@ -84,7 +88,7 @@ const Carousel = ({
               switch (type) {
                 case "certificatesCarousel":
                   return (
-                    <Image width={480} height={200} src={item} alt={item} />
+                    <Image width={480} height={250} src={item} alt={item} />
                   );
                 case "galleryCarousel":
                   return (

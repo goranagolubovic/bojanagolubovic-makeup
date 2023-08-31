@@ -17,7 +17,7 @@ const userSchema = object().shape({
   komentar: string().required(REQ_FIELD),
 });
 
-const FeedbackForm = () => {
+const FeedbackForm = ({ feedbackAdded, setFeedbackAdded }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [session, setSession] = useState("");
   const [fieldErrors, setFieldErrors] = useState({});
@@ -56,6 +56,7 @@ const FeedbackForm = () => {
       setMessage(responseData.message.POST_SUCCESS);
       setPopupType(responseData.status === 200 ? "success" : "error");
       setFormReset(true);
+      setFeedbackAdded(!feedbackAdded);
     } catch (error) {
       const fieldErrors = {};
       error.inner.forEach((err) => {

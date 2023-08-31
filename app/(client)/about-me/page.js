@@ -33,7 +33,11 @@ const AboutMe = async () => {
         </div>
       </div>
       <CertificatesList title="Moji sertifikati">
-        <Carousel items={certificates} type="certificatesCarousel" />
+        <Carousel
+          items={certificates}
+          type="certificatesCarousel"
+          containerStyle="w-full lg:w-5/6 mx-auto"
+        />
       </CertificatesList>
     </div>
   );

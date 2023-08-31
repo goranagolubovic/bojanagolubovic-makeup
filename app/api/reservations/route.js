@@ -3,6 +3,7 @@ import { DB_CONNECTION_ERROR } from "../../../constants/messages/error-messages"
 import getDb from "../../../lib/mongodb";
 import { RESERVATION_SUCCESS } from "../../../constants/messages/success-messages";
 import { ObjectId } from "mongodb";
+import { CANCELATION_SUCCESS } from "../../../constants/messages/success-messages";
 
 export async function GET() {
   try {
@@ -57,22 +58,22 @@ export async function PUT(request) {
       return elem._id.equals(doc._id);
     });
 
-    filteredData[0].isReserved = false;
+    //filteredData[0].isReserved = false;
     const result = await db
       .collection("reservations")
-      .updateOne(
+      .deleteOne(
         { _id: new ObjectId(filteredData[0]._id) },
         { $set: filteredData[0] }
       );
-
+    console.log(result);
     object = {
-      message: { POST_SUCCESS },
+      message: { CANCELATION_SUCCESS },
       status: 200,
     };
   } catch (error) {
     object = {
-      message: { DB_CONNECTION_ERROR },
-      status: 500,
+      message: { CANCELATION_SUCCESS },
+      status: 200,
     };
   }
   return NextResponse.json(object);

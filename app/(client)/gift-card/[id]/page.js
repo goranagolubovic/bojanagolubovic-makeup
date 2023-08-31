@@ -1,6 +1,4 @@
-"use client";
 import { React } from "react";
-import { useParams } from "next/navigation";
 import { URL } from "@/constants/constants";
 import GiftCardForm from "../../../../features/gift-card-form/gift-card-form";
 import ReservationForm from "@/features/reservation-form/reservation-form";
@@ -22,8 +20,7 @@ const getGiftCard = async (id) => {
   return data;
 };
 
-const GiftCardPurchase = async () => {
-  const params = useParams();
+const GiftCardPurchase = async ({ params }) => {
   const data = await getGiftCard(params.id);
 
   const elem = data.giftcard[0];

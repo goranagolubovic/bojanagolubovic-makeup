@@ -3,15 +3,23 @@ import ScheduleSettingsElement from "@/components/schedule-settings-element";
 import { React, useEffect, useState } from "react";
 import PopUp from "../popup/popup";
 
-const ScheduleSettingsContainer = ({ title, items }) => {
+const ScheduleSettingsContainer = ({
+  title,
+  items,
+  reservationCanceled,
+  setReservationCanceled,
+}) => {
   const [canceledMessage, setCanceledMessage] = useState("");
 
   const tooglePopup = () => {
     setCanceledMessage("");
+    setReservationCanceled(!reservationCanceled);
   };
-  useEffect(() => {
-    console.log("poruka" + canceledMessage);
-  }, [canceledMessage]);
+
+  // useEffect(() => {
+  //   console.log("poruka" + canceledMessage);
+  // }, [canceledMessage]);
+
   return (
     <div className=" bg-white h-[480px] w-[90%] lg:w-[100%] flex flex-col items-center gap-2 sm:gap-2 md:gap-4 lg:gap-8 rounded-[20px] py-4">
       <p className="font-greatvibes text-2xl  sm:text-2xl md:text-3xl lg:text-4xl text-purple ">

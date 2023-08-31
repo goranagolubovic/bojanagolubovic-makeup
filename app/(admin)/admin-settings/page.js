@@ -13,31 +13,31 @@ const AdminSettings = () => {
 
   return (
     <div className="w-full flex justify-center items-center">
-      {session && session.user.email === "bojanagolubovic.makeup@gmail.com" ? (
-        <div className="w-full flex flex-col">
-          <div className="w-full flex flex-col sm:flex-col md:flex-row lg:flex-row gap-4">
-            <div className="w-[90%] sm:w-[90%] md:[w-50%] lg:w-[50%] h-[50%]">
-              <GiftCardSettings
-                title="Kupljeni poklon bonovi"
-                giftCardsReady={giftCardsReady}
-                setGiftCardsReady={setGiftCardsReady}
-              />
-            </div>
-            <div className="w-[90%] sm:w-[90%] md:[w-50%]  lg:w-[48%] h-[40%] lg:h-[50%]">
-              <GallerySettings
-                title="Galerija"
-                galleryReady={galleryReady}
-                setGalleryReady={setGalleryReady}
-              />
-            </div>
+      {/* {session && session.user.email === "bojanagolubovic.makeup@gmail.com" && ( */}
+      <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col sm:flex-col md:flex-row lg:flex-row gap-4">
+          <div className="w-[90%] sm:w-[90%] md:[w-50%] lg:w-[50%] h-[50%]">
+            <GiftCardSettings
+              title="Kupljeni poklon bonovi"
+              giftCardsReady={giftCardsReady}
+              setGiftCardsReady={setGiftCardsReady}
+            />
           </div>
-          <ScheduleSettings title="Rezervisani termini" />
+          <div className="w-[90%] sm:w-[90%] md:[w-50%]  lg:w-[48%] h-[40%] lg:h-[50%]">
+            <GallerySettings
+              title="Galerija"
+              galleryReady={galleryReady}
+              setGalleryReady={setGalleryReady}
+            />
+          </div>
         </div>
-      ) : (
-        <div>
-          <Error message="Nemate pravo pristupa ovoj stranici" />
-        </div>
-      )}
+        <ScheduleSettings title="Rezervisani termini" />
+      </div>
+      {/* // ) : (
+      //   <div>
+      //     <Error message="Nemate pravo pristupa ovoj stranici" />
+      //   </div>
+      //)} */}
     </div>
   );
 };

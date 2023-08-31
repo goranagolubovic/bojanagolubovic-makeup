@@ -19,9 +19,10 @@ const ScheduleSettingsElement = ({ elem, setCanceledMessage }) => {
     });
     const responseData = await response.json();
     console.log(JSON.stringify(responseData));
-    responseData.status === "200"
-      ? setCanceledMessage("Rezervacija je otkazana.")
-      : setCanceledMessage(responseData.message.DB_CONNECTION_ERROR);
+    setCanceledMessage(responseData.message.CANCELATION_SUCCESS);
+    // responseData.status === "200"
+    //   ? setCanceledMessage("Rezervacija je otkazana.")
+    //   : setCanceledMessage(responseData.message.DB_CONNECTION_ERROR);
   };
 
   return (

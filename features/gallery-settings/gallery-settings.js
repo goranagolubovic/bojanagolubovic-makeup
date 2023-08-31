@@ -17,7 +17,8 @@ const GallerySettings = ({ title, setGalleryReady, galleryReady }) => {
       cache: "no-store",
     });
     const responseData = await response.json();
-    setPictures(responseData.pictures);
+    const pics = responseData.pictures.reverse();
+    setPictures(pics);
     setGalleryReady(true);
   };
 
